@@ -14,7 +14,7 @@
           
         <div class="row">
             <div class="col s4 offset-s4 center-align" id="frm_registrar">
-                <h5 class="blue-text">REGISTRAR MATRIMONIO</h5><br><br>
+                <h5 class="blue-text">REGISTRAR TU MATRIMONIO</h5><br><br>
                 <form action="registrarmatrimonio.php" method="post" accept-charset="utf-8" enctype="multipart/form-data" id="formulario">
                          <div class="input-field">
                         <input type="text" name="txtnombre" value="" placeholder="" required="required">
