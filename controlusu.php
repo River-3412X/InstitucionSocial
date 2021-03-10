@@ -2,7 +2,7 @@
 $server = "localhost";
 $usuario = "root";
 $contraseña = "";
-$bd = "ss";
+$bd = "u125755129_institucion";
 
 $conexion = mysqli_connect($server, $usuario, $contraseña, $bd);
 

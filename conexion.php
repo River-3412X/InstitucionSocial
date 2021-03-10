@@ -2,7 +2,7 @@
 $server ="localhost";
 $usuario="root";
 $clave="";
-$bd="ss";
+$bd="u125755129_institucion";
 
 $conexion = new mysqli($server,$usuario,$clave,$bd);
 $conexion -> set_charset("uft-8");

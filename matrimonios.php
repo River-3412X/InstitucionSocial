@@ -1,5 +1,5 @@
 <?php
-include('conexion.php'); 
+  include_once "conexion.php"; 
 
     @$idmat=$_GET['id'];
     $consulta="SELECT * FROM matrimonios WHERE idmatriminio='$idmat'";
