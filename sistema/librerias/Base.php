@@ -29,7 +29,7 @@
                 echo $this->error;
             }
         }
-        public function consultarRegistro($sql,$parametros=[]){
+        public function consultarRegistro($sql,$parametros=[]){//consulta solo 1 registro
             try{
                 $this->pstm=$this->pdo->prepare($sql);
                 if($parametros){
@@ -45,7 +45,7 @@
                 echo $this->error;
             }            
         }
-        public function consultar($sql,$parametros=[]){            
+        public function consultar($sql,$parametros=[]){    //regresa mas de un registro        
             try{
                 $this->pstm=$this->pdo->prepare($sql);
                 if($parametros){
@@ -61,7 +61,7 @@
                 echo $this->error;
             }            
         }
-        public function insertar($sql,$parametros){
+        public function insertar($sql,$parametros){//todos
             try{
                 $this->pstm=$this->pdo->prepare($sql);
                 foreach($parametros as $datos){

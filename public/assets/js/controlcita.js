@@ -6,7 +6,8 @@ $().ready(function(){
             url:$(this).attr("action"),
             data:$(this).serialize(),
             success:function(respuesta){
-                console.log("la respuesta es:"+respuesta);
+                alert(respuesta);
+                location.reload();
             },
             error:function(respuesta){
                 console.log("el error es: "+respuesta);
@@ -17,7 +18,7 @@ $().ready(function(){
         console.log("chambio el valor");
         $.ajax({
             type:"post",
-            url:"controlcita.php",
+            url:$("#boton").attr("href"),
             data:{
                 "fecha":$(this).val()
             },

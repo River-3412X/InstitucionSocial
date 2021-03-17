@@ -59,4 +59,29 @@ class Matrimonios extends Controlador
             }
         }
     }
+    public function boton_cita()
+    {
+       echo $this->modelo->boton_citas(trim($_POST['fecha']));
+        //ejecutar metodo
+    }
+    public function registrar_cita()
+    {
+         if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            verificarSesion(); //se verifica la sesion
+            $this->cargarVista("Registrar_citas");// se carga una vista, la primer letra tiene que se mayuscula, y no debe tener la extencion .php
+        }else{
+             if($_SERVER['REQUEST_METHOD'] == "POST"){
+                  
+                $fecha = trim($_POST['txtfecha']);//captura de datos 
+                 $hora = trim($_POST['txthora']);
+                 $motivo = trim($_POST['txtmotivo']);
+                echo $this->modelo->registrar_citas($fecha,$hora,$motivo);//objeto 
+                 
+                 
+             }
+         }
+       
+        
+    }
+    
 }

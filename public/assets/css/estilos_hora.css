@@ -5,10 +5,10 @@
 }
 .contenedor-hora ul li{
     list-style-type: none;
-    margin-bottom: 8px;
+    margin-bottom: 15px;
 }
 .contenedor-hora ul li button{
-    width: 100%;
+    width: 50%;
     height: 100%;
     border:none;
     background-color: #1A2537;

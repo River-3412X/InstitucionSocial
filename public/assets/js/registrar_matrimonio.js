@@ -254,6 +254,7 @@ $().ready(function(){
             processData: false,
             success:function(respuesta){
                 alert(respuesta);
+                location.reload();
             },
             error:function(error){
                 console.log("ocurrio un error"+error);

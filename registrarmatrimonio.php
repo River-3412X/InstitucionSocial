@@ -3,12 +3,6 @@
     $nombreNovia = $_POST['txtnombre'];
     $apellidosNovia = $_POST['txtapellido'];
 
-    
-  
-
-
-    
-
     $nombreNovio=$_POST["txtnom"];
     $apellidosNovio=$_POST["txtape"];
     $fecha=$_POST['txtfecha'];

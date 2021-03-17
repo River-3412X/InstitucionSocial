@@ -8,14 +8,16 @@ include_once "encabezados/Header.php";
     <div id="header">
 
         <!-- Logo -->
-        <h1><a href="index.html" id="logo"><em>bienvenido</em></a></h1>
-
+        <h1><a href="index.html" id="logo"><em>Bienvenido</em></a></h1>
+ 
         <!-- Nav -->
         <nav id="nav">
             <ul>
                 <li><a href="index.html">inicio</a></li>
                 <li><a href="bauusu.php">Bautizo</a></li>
                 <li><a href="<?php echo DOMINIO; ?>/matrimonios/registrar">Matrimonio</a></li>
+                <li><a href="<?php echo DOMINIO; ?>/home/cerrar_sesion">Salir</a></li>
+               
             </ul>
         </nav>
 
