@@ -30,7 +30,7 @@
             }
         }
         public function usuario(){
-            verificarSesion(); //verificar si existe una sesion, y solo se hacen en los metodos get, los post se ignoran
+            verificarSesion(); // se isa cuando ya esta dentro de la sesion verificar si existe una sesion, y solo se hacen en los metodos get, los post se ignoran
             $this->cargarVista("Interfaz_usuario");
         }
         //agregué este método para cerrar sesión aqui, ya que puedes hacerlo en cualquier controlador
@@ -41,6 +41,21 @@
         // <a href="dominio/home/cerrar_sesion">Cerrar Sesión</a> y esto re cerraría la sesión
         public function cerrar_sesion(){
             cerrarSesion();
+        }
+        
+        public function registrar()
+        {
+            if(_SERVER['REQUEST_METHOD']=="GET")
+            {
+            verificarSesionLogin();//se usa cuando no haya sesion 
+            $this->cargarVista("Registrar_usuarios");
+            }
+            else
+            {
+                if(_SERVER['REQUEST_METHOD']=="POST"){
+                    
+                }
+            }
         }
      
     }

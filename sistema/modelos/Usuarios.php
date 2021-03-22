@@ -42,5 +42,54 @@
                 // window.location.href="loginvista.php";
                 // </script>'; // Alerta de datos incorrectos 
             }
+            
+                public function registar_usuario($nombre,$correo,$usuario,$password){
+                       
+    $idusuario =rand(2,100);
+    $nombre= $_POST['nombre'];
+    $correo= $_POST['email'];
+    $usuario= $_POST['usuario'];
+    $password= $_POST['password'];
+    $idrol= 2;
+
+
+    $insertar = "INSERT INTO usuario VALUES('$idusuario','$nombre', '$correo','$usuario','$password', '$idrol')";
+     $parametros=[
+                ["etiqueta"=>"nombre","valor"=>$this->nombre,"parametro"=>PDO::PARAM_STR],
+                ["etiqueta"=>"correo","valor"=>$this->correo,"parametro"=>PDO::PARAM_STR],
+                ["etiqueta"=>"usuario","valor"=>$this->usuario,"parametro"=>PDO::PARAM_STR],
+                ["etiqueta"=>"password","valor"=>$this->password,"parametro"=>PDO::PARAM_STR],
+            ];               
+                    
+    $resultado= mysqli_query($conexion,$insertar);
+
+if($resultado){
+    
+    echo '<script type="text/javascript">
+	alert("gracias por registrarse.");
+	window.location.href="loginvista.php";
+	</script>';
+    
+
+}
+else{
+     echo '<script type="text/javascript">
+	alert("error al registrarse ");
+	window.location.href="registro.php";
+	</script>';
+    
+    
+    
+}
+
+$asunto='Registro exitoso'; 
+	$desde='vanesasantana66@gmail.com'; 
+	$comentario='<p> Hola,te registraste exitosamente </p> <br>';
+	$headers = "MIME-Version: 1.0\r\n";  
+	$headers .= "Content-type: text/html; charset=utf8\r\n"; 
+	$headers .= "From: Remitente\r\n"; 
+	mail($correo,$asunto,$comentario,$headers);
+                    
+                }
         }
     }

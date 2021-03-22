@@ -19,7 +19,7 @@
         <input type="submit" value="INGRESAR" class="button">
 
         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-        <p>¿No tienes una cuenta? <a class="link" href="registro.php">Registrarse </a></p>
+        <p>¿No tienes una cuenta? <a class="link" href="<?php ECHO DOMINIO; ?>/home/registrar">Registrarse </a></p>
     </div>
 </form>
 <script type="text/javascript">
