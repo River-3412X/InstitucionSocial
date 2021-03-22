@@ -104,12 +104,12 @@ if ($fecha == "") {
         //visualizar los datos 
         if($datos)
         {
-         //permite recorrer objetos  
-        foreach($dato as $datos){ //es el arreglo 
-            if ($dato->hora==$hora){//variable de la base de datos==al que llega
-                return "ya ingresaste la hora";
-            }
-        }    
+            //permite recorrer objetos  
+            foreach($datos as $dato){ //es el arreglo 
+                if ($dato->hora==$hora){//variable de la base de datos==al que llega
+                    return "ya ingresaste la hora";
+                }
+            }    
         }
         
         if ($motivo == "") {

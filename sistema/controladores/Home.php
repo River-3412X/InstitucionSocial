@@ -45,15 +45,21 @@
         
         public function registrar()
         {
-            if(_SERVER['REQUEST_METHOD']=="GET")
+            if($_SERVER['REQUEST_METHOD']=="GET")
             {
-            verificarSesionLogin();//se usa cuando no haya sesion 
-            $this->cargarVista("Registrar_usuarios");
+                verificarSesionLogin();//se usa cuando no haya sesion 
+                $this->cargarVista("Registrar_usuarios");
             }
             else
             {
-                if(_SERVER['REQUEST_METHOD']=="POST"){
+                if($_SERVER['REQUEST_METHOD']=="POST"){
+                    $nombre= trim($_POST['nombre']);
+                    $correo= trim($_POST['email']);
+                    $usuario= trim($_POST['usuario']);
+                    $password= trim($_POST['password']);
                     
+                    $this->modelo=$this->cargarModelo("Usuarios");
+                    echo $this->modelo->registar_usuario($nombre,$correo,$usuario,$password);
                 }
             }
         }

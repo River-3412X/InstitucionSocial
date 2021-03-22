@@ -43,53 +43,43 @@
                 // </script>'; // Alerta de datos incorrectos 
             }
             
-                public function registar_usuario($nombre,$correo,$usuario,$password){
+        }
+
+        public function registar_usuario($nombre,$correo,$usuario,$password){
                        
-    $idusuario =rand(2,100);
-    $nombre= $_POST['nombre'];
-    $correo= $_POST['email'];
-    $usuario= $_POST['usuario'];
-    $password= $_POST['password'];
-    $idrol= 2;
+            $idusuario =rand(2,100);
+            $idrol= 2;
 
 
-    $insertar = "INSERT INTO usuario VALUES('$idusuario','$nombre', '$correo','$usuario','$password', '$idrol')";
-     $parametros=[
-                ["etiqueta"=>"nombre","valor"=>$this->nombre,"parametro"=>PDO::PARAM_STR],
-                ["etiqueta"=>"correo","valor"=>$this->correo,"parametro"=>PDO::PARAM_STR],
-                ["etiqueta"=>"usuario","valor"=>$this->usuario,"parametro"=>PDO::PARAM_STR],
-                ["etiqueta"=>"password","valor"=>$this->password,"parametro"=>PDO::PARAM_STR],
-            ];               
-                    
-    $resultado= mysqli_query($conexion,$insertar);
+            $insertar = "INSERT INTO usuario VALUES(:idusuario,:nombre, :correo,:usuario,:password, :idrol)"; //se define la instruccion sql
+            $parametros=[
+                        ["etiqueta"=>"idusuario","valor"=>$idusuario,"parametro"=>PDO::PARAM_INT],
+                        ["etiqueta"=>"nombre","valor"=>$nombre,"parametro"=>PDO::PARAM_STR],
+                        ["etiqueta"=>"correo","valor"=>$correo,"parametro"=>PDO::PARAM_STR],
+                        ["etiqueta"=>"usuario","valor"=>$usuario,"parametro"=>PDO::PARAM_STR],
+                        ["etiqueta"=>"password","valor"=>$password,"parametro"=>PDO::PARAM_STR],
+                        ["etiqueta"=>"idrol","valor"=>$idrol,"parametro"=>PDO::PARAM_INT]
+                    ];               //se cargan los parametros a insertar, con el nombre de la etiqueta que debe coincidir con la etiqueta que esta dentro de la instruccion sql (:etiqueta)
+                            
+            $base_de_datos = new Base(); //crear un objeto de base de datos, de la clase base
+            //se llama al metodo insertar de la clase base o del objeto declarado en la linea anterior
+            if( $base_de_datos->insertar($insertar,$parametros)==1 ){ //si el metodo insertar regresa 1, significa que se registro bien, sino pues hubo un error.
+                $asunto='Registro exitoso'; 
+                $desde='vanesasantana66@gmail.com'; 
+                $comentario='<p> Hola,te registraste exitosamente </p> <br>';
+                $headers = "MIME-Version: 1.0\r\n"; 
+                $headers .= "Content-type: text/html; charset=utf8\r\n"; 
+                $headers .= "From: Remitente\r\n"; 
+                mail($correo,$asunto,$comentario,$headers);
 
-if($resultado){
-    
-    echo '<script type="text/javascript">
-	alert("gracias por registrarse.");
-	window.location.href="loginvista.php";
-	</script>';
-    
+                session_start();
+                $_SESSION['id'] =$idusuario;
+                $_SESSION['username'] = $usuario; // Variable de sesión que almacena el correo del administrador
 
-}
-else{
-     echo '<script type="text/javascript">
-	alert("error al registrarse ");
-	window.location.href="registro.php";
-	</script>';
-    
-    
-    
-}
-
-$asunto='Registro exitoso'; 
-	$desde='vanesasantana66@gmail.com'; 
-	$comentario='<p> Hola,te registraste exitosamente </p> <br>';
-	$headers = "MIME-Version: 1.0\r\n";  
-	$headers .= "Content-type: text/html; charset=utf8\r\n"; 
-	$headers .= "From: Remitente\r\n"; 
-	mail($correo,$asunto,$comentario,$headers);
-                    
-                }
+                return "gracias por registrarse";
+            }
+            else{
+                return "error al registrarse";
+            }
         }
     }
