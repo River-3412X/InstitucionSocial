@@ -1,0 +1,139 @@
+create database tesis;
+use database tesis;
+create table usuario(
+idusuario INT AUTO_INCREMENT,
+nombre VARCHAR(30),
+correo VARCHAR(100),
+usuario VARCHAR(30),
+password TEXT,
+idrol INT,
+PRIMARY KEY (idusuario),
+FOREIGN KEY (idrol) references rol(idrol) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+create table rol(
+idrol INT AUTO_INCREMENT,
+rol VARCHAR(30),
+PRIMARY KEY(idrol));
+
+create table comunion(
+idcomunion INT AUTO_INCREMENT,
+nombre VARCHAR(50),
+apellidos VARCHAR(50),
+fecha_year VARCHAR(10),
+fecha_month VARCHAR(10),
+fecha_day VARCHAR(10),
+edad INT(4),
+idnivel INT,
+actanacimiento TEXT,
+febautizo TEXT,
+direccion VARCHAR(60),
+comprobantedomicilio TEXT,
+idusuario INT,
+nombmadre VARCHAR(50),
+apellidosmadre VARCHAR(50),
+nombpadre VARCHAR(50),
+apellidospadre VARCHAR(50),
+telefono INT(10),
+PRIMARY KEY (idcomunion),
+FOREIGN KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (idnivel) references nivel(idnivel) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+create table confirmacion(
+idconfirmacion INT AUTO_INCREMENT,
+nombre VARCHAR(50),
+apellidos VARCHAR(50),
+fecha_year VARCHAR(10),
+fecha_month VARCHAR(10),
+fecha_day VARCHAR(10),
+edad INT(4),
+idnivel INT,
+actanacimiento TEXT,
+febautizo TEXT,
+certificadocomunion TEXT,
+direccion VARCHAR(60),
+comprobantedomicilio TEXT,
+idusuario INT,
+nombmadre VARCHAR(50),
+apellidosmadre VARCHAR(50),
+nombpadre VARCHAR(50),
+apellidospadre VARCHAR(50),
+telefono INT(10),
+PRIMARY KEY (idconfirmacion),
+FOREING KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (idnivel) references nivel(idnivel) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+
+create table nivel(
+idnivel INT AUTO_INCREMENT,
+nivel VARCHAR(30),
+PRIMARY KEY (idnivel)
+);
+
+create table matrimonios(
+idmatrimonio INT AUTO_INCREMENT,
+nomnovia VARCHAR(50), 
+apellidonovia VARCHAR(50),
+nomnovio VARCHAR(50), 
+apellidonovio VARCHAR(50), 
+fechayear VARCHAR(10),
+fechamonth VARCHAR(10),
+fechaday VARCHAR(10),
+horaboda VARCHAR(20), 
+nommadrina VARCHAR(50), 
+apemadrina VARCHAR(50), 
+nompadrino VARCHAR(50), 
+apepadrino VARCHAR(50), 
+actanacimientonovia TEXT, 
+comprobantedomicilionovia TEXT,
+comprobantebautizonovia TEXT,
+certificadoconfirmacionnovia TEXT, 
+actanacimientonovio TEXT,
+comprobantedomicilionovio TEXT,
+comprobantebautizonovio TEXT,
+certificadoconfirmacionnovio TEXT, 
+actamatrimoniopadrinos TEXT,
+idusuario INT,
+PRIMARY KEY (idmatrimonio),
+FOREIGN KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+
+create table bautizos (
+idbautizo INT AUTO_INCREMENT,
+nombre VARCHAR(50), 
+apellido VARCHAR(50), 
+nombmadre VARCHAR(50),
+apellidosmadre VARCHAR(50), 
+nombpadre VARCHAR(50), 
+apellidospadre VARCHAR(50), 
+telefono INT(10), 
+fechayear VARCHAR(10),
+fechamonth VARCHAR(10),
+fechaday VARCHAR(10),
+horabautizo VARCHAR(20),
+idusuario INT,
+PRIMARY KEY (idbautizo),
+FOREIGN KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+create table cita (
+idcita INT AUTO_INCREMENT,
+idusuario INT,
+fechayear VARCHAR(10),
+fechamonth VARCHAR(10),
+fechaday VARCHAR(10),
+hora VARCHAR(20),
+motivo VARCHAR(50),
+PRIMARY KEY (idcita),
+FOREIGN KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE);
+
+
+
+
+
