@@ -25,6 +25,12 @@ class Matrimonios extends Controlador
 
                 $nombrePadrino = trim($_POST['txtapad']);
                 $apellidosPadrino = trim($_POST['txtnpad']);
+                $hora_boda= trim($_POST['hora']);
+
+//                datos para registrar la cita
+                $fecha_cita = trim($_POST['txtfecha_cita']);//captura de datos 
+                $hora_cita = trim($_POST['txthora']);
+                $motivo_cita = trim($_POST['txtmotivo']);
 
                 $ann = $_FILES['actanacimientonovia'];
                 $comnovia = $_FILES['comprobantedomicilionovia'];
@@ -54,7 +60,8 @@ class Matrimonios extends Controlador
                     $cdno,
                     $cbno,
                     $ccno,
-                    $amp
+                    $amp,$hora_boda,
+                    $fecha_cita,$hora_cita,$motivo_cita
                 );
             }
         }
@@ -63,6 +70,9 @@ class Matrimonios extends Controlador
     {
        echo $this->modelo->boton_citas(trim($_POST['fecha']));
         //ejecutar metodo
+    }
+    public function boton_cita_matrimonios(){
+        echo $this->modelo->boton_citas_matrimonios(trim($_POST['fecha']));
     }
     public function registrar_cita()
     {
@@ -76,8 +86,6 @@ class Matrimonios extends Controlador
                  $hora = trim($_POST['txthora']);
                  $motivo = trim($_POST['txtmotivo']);
                 echo $this->modelo->registrar_citas($fecha,$hora,$motivo);//objeto 
-                 
-                 
              }
          }
        

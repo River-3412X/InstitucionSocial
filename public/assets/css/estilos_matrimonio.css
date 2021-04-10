@@ -35,3 +35,23 @@ input[type="file"]{
 .nombre-archivo:hover{
     box-shadow: 5px 5px 5px rgba(0,0,0,0.15);
 }
+.tab-container-item{
+    display: none;
+}
+.tab-container .active{
+    display:block;
+    
+}
+.tab-header{
+    background-color:#2f565c;
+}
+.tab-header button{
+    background-color: #5a6e78;
+    color:#ffffd1;
+}
+
+.tab-header button.active{
+    background-color: #ffffd1;
+    color:#5a6e78;
+}
+

@@ -1,27 +1,44 @@
 <?php
     require_once "encabezados/Header.php";
 ?>
- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
+ <!-- <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" > -->
 <link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/estilos.css" />
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<form action="#" method="post" class="formulario" id="formulario">
-    <h1>Iniciar Sesión</h1>
-    <div class="contenedor">
-        <div class="input-contenedor"><i class="fas fa-envelope icon"></i>
-            <input type="text" name="usuario" placeholder="Nombre" required="required">
-        </div>
 
-        <div class="input-contenedor">
-            <i class="fas fa-key icon"></i>
-            <input type="password" name="password" placeholder="Contraseña" required="required">
+<div class="container" id="login">
+    <div class="row m-0 p-0 container_login shadow">
+        <div class="col-12 col-sm-6 img p-0">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/login.jpeg" alt="...">
         </div>
-        <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-        <input type="submit" value="INGRESAR" class="button">
+        <div class="col-12 col-sm-12 col-lg-6 p-3 pt-5">
+            <form action="#" method="post" class="formulario" id="formulario">
+                <h1 class="text-center">Iniciar Sesión</h1>
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label for="usuario">Nombre de Usuario</label>
+                        <input type="text" name="usuario" placeholder="Usuario" required="required" class="form-control">
+                    </div>
 
-        <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-        <p>¿No tienes una cuenta? <a class="link" href="<?php ECHO DOMINIO; ?>/home/registrar">Registrarse </a></p>
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" placeholder="Contraseña" required="required" class="form-control">
+                    </div>
+                    <input type="submit" value="Ingresar" class="btn btn-block" style="background-color:#c2b5a5; color:black;" >
+                    <br><br>
+                    <p class="text-center">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                    <p class="text-center">¿No tienes una cuenta? <a class="link" href="<?php ECHO DOMINIO; ?>/home/registrar">Registrarse </a></p>
+                </div>
+            </form>
+        </div>
     </div>
-</form>
+</div>
+<br><br>
+
+
+<?php
+require_once "alertas/alertas.php";
+    require_once "encabezados/Footer.php";
+?>
+
 <script type="text/javascript">
     $().ready(function(){
         $("#formulario").submit(function(e){
@@ -31,13 +48,19 @@
                 type:$(this).attr("method"),
                 data:$(this).serialize(),
                 success:function(respuesta){
-                    alert(respuesta);
-                    location.reload();
+                    if(respuesta.indexOf("Bienvenido")!=-1){
+                        $("#contenido_modal_success").html(respuesta);
+                        $("#modal_success").modal("show");
+                        $('#modal_success').on('hidden.bs.modal', function (e) {
+                            location.reload();//actualizar pagina
+                        });
+                    }
+                    else{
+                        $("#contenido_modal_danger").html(respuesta);
+                        $("#modal_danger").modal("show");
+                    }
                 }
             });
         });
     });
 </script>
-<?php
-    require_once "encabezados/Footer.php";
-?>

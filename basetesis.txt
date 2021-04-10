@@ -1,5 +1,13 @@
 create database tesis;
 use database tesis;
+
+
+create table rol(
+idrol INT AUTO_INCREMENT,
+rol VARCHAR(30),
+PRIMARY KEY(idrol));
+
+
 create table usuario(
 idusuario INT AUTO_INCREMENT,
 nombre VARCHAR(30),
@@ -11,18 +19,20 @@ PRIMARY KEY (idusuario),
 FOREIGN KEY (idrol) references rol(idrol) 
 ON DELETE CASCADE ON UPDATE CASCADE);
 
-create table rol(
-idrol INT AUTO_INCREMENT,
-rol VARCHAR(30),
-PRIMARY KEY(idrol));
+
+
+create table nivel(
+idnivel INT AUTO_INCREMENT,
+nivel VARCHAR(30),
+PRIMARY KEY (idnivel)
+);
+
 
 create table comunion(
 idcomunion INT AUTO_INCREMENT,
 nombre VARCHAR(50),
 apellidos VARCHAR(50),
-fecha_year VARCHAR(10),
-fecha_month VARCHAR(10),
-fecha_day VARCHAR(10),
+fecha_nacimiento date,
 edad INT(4),
 idnivel INT,
 actanacimiento TEXT,
@@ -45,9 +55,7 @@ create table confirmacion(
 idconfirmacion INT AUTO_INCREMENT,
 nombre VARCHAR(50),
 apellidos VARCHAR(50),
-fecha_year VARCHAR(10),
-fecha_month VARCHAR(10),
-fecha_day VARCHAR(10),
+fecha_nacimiento date,
 edad INT(4),
 idnivel INT,
 actanacimiento TEXT,
@@ -68,11 +76,6 @@ FOREIGN KEY (idnivel) references nivel(idnivel)
 ON DELETE CASCADE ON UPDATE CASCADE);
 
 
-create table nivel(
-idnivel INT AUTO_INCREMENT,
-nivel VARCHAR(30),
-PRIMARY KEY (idnivel)
-);
 
 create table matrimonios(
 idmatrimonio INT AUTO_INCREMENT,
@@ -80,9 +83,7 @@ nomnovia VARCHAR(50),
 apellidonovia VARCHAR(50),
 nomnovio VARCHAR(50), 
 apellidonovio VARCHAR(50), 
-fechayear VARCHAR(10),
-fechamonth VARCHAR(10),
-fechaday VARCHAR(10),
+fecha date,
 horaboda VARCHAR(20), 
 nommadrina VARCHAR(50), 
 apemadrina VARCHAR(50), 
@@ -112,9 +113,7 @@ apellidosmadre VARCHAR(50),
 nombpadre VARCHAR(50), 
 apellidospadre VARCHAR(50), 
 telefono INT(10), 
-fechayear VARCHAR(10),
-fechamonth VARCHAR(10),
-fechaday VARCHAR(10),
+fecha date,
 horabautizo VARCHAR(20),
 idusuario INT,
 PRIMARY KEY (idbautizo),
@@ -124,9 +123,7 @@ ON DELETE CASCADE ON UPDATE CASCADE);
 create table cita (
 idcita INT AUTO_INCREMENT,
 idusuario INT,
-fechayear VARCHAR(10),
-fechamonth VARCHAR(10),
-fechaday VARCHAR(10),
+fecha date,
 hora VARCHAR(20),
 motivo VARCHAR(50),
 PRIMARY KEY (idcita),
@@ -134,6 +131,31 @@ FOREIGN KEY (idusuario) references usuario(idusuario)
 ON DELETE CASCADE ON UPDATE CASCADE);
 
 
+alter table cita drop column fechayear;
+alter table cita drop column fechamonth;
+alter table cita drop column fechaday;
+alter table cita add fecha date;
 
+
+alter table matrimonios drop column fechayear;
+alter table matrimonios drop column fechamonth;
+alter table matrimonios drop column fechaday;
+alter table matrimonios add fecha date;
+
+alter table bautizos drop column fechayear;
+alter table bautizos drop column fechamonth;
+alter table bautizos drop column fechaday;
+alter table bautizos add fecha date;
+
+
+alter table confirmacion drop column fecha_year;
+alter table confirmacion drop column fecha_month;
+alter table confirmacion drop column fecha_day;
+alter table confirmacion add fecha_nacimiento date;
+
+alter table comunion drop column fecha_year;
+alter table comunion drop column fecha_month;
+alter table comunion drop column fecha_day;
+alter table comunion add fecha_nacimiento date;
 
 

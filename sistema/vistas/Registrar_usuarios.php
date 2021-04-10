@@ -1,44 +1,48 @@
 <?php require_once "encabezados/Header.php"; ?>
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" >
-<link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/estilos.css" />
-<script src="<?php echo DOMINIO;?>/public/assets/librerias/jquery-3.4.0.min.js"></script>
 
+<link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/estilos.css" />
 <script src="<?php echo DOMINIO;?>/public/assets/js/registrar_usuario.js"></script>
 
- <form action="#" method="post" class="formulario" id="formulario">
- 
-    
-    <h1>Registro</h1>
-     <div class="contenedor">
-     
-     <div class="input-contenedor">
-         <i class="fas fa-user icon"></i>
-        <input type="text"  name="nombre"  placeholder="Nombre" autocomplete="off" required>
-         
-         </div>
-         
-         <div class="input-contenedor">
-          <i class="fas fa-envelope icon"></i>
-        <input type="text"  name="email"  placeholder="Correo" autocomplete="off" required>
-         </div>
-              
-    
-         <div class="input-contenedor">
-         <i class="fas fa-user icon"></i>
-        <input type="text"  name="usuario"  placeholder="Usuario" autocomplete="off" required>
-         </div>
-         
-         <div class="input-contenedor">
-        <i class="fas fa-key icon"></i>
-        <input type="password" name="password"  placeholder="Contraseña" autocomplete="off" required><br/>     
-         
-         </div>
-        <input type="submit"  value="Registrarse" name="registrarse" class="button">
-         <p>Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-         <p>¿Ya tienes una cuenta?<a class="link" href="<?php echo DOMINIO; ?>/home/login">Iniciar Sesion</a></p>
-     </div>
-     
-     
-    </form>
+<div class="container" id="login">
+    <div class="row m-0 p-0 container_login shadow">
+        <div class="col-12 col-sm-6 img p-0">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/img6.jpeg" alt="...">
+        </div>
+        <div class="col-12 col-sm-12 col-lg-6 p-3 ">
+            <form action="#" method="post" class="formulario" id="formulario">
+                <h1 class="text-center">Registrarse</h1>
+                <div class="contenedor">
+                    <div class="form-group">
+                        <label for="nombre">Nombre</label>
+                        <input type="text" name="nombre" placeholder="Nombre" required="required" class="form-control">
+                    </div>
 
-<?php require_once "encabezados/Footer.php"; ?>
+                    <div class="form-group">
+                        <label for="usuario">Nombre de Usuario</label>
+                        <input type="text" name="usuario" placeholder="Usuario" required="required" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Nombre de email</label>
+                        <input type="text" name="email" placeholder="Email" required="required" class="form-control">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Contraseña</label>
+                        <input type="password" name="password" placeholder="Contraseña" required="required" class="form-control">
+                    </div>
+                    <input type="submit" value="Registrarse" class="btn btn-block" style="background-color:#c2b5a5; color:black;" >
+                    
+                    <p class="text-center">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
+                    <p class="text-center">¿Ya tienes una cuenta?<a class="link" href="<?php echo DOMINIO; ?>/home/login">Iniciar Sesion</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<br><br>
+
+<?php 
+
+require_once "alertas/alertas.php";
+require_once "encabezados/Footer.php"; ?>

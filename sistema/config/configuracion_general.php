@@ -4,7 +4,7 @@
     define("TITULO","Institución Social");
 
     define("HOST","localhost");
-    define("NOMBRE_BASE","ss");
+    define("NOMBRE_BASE","tesis");
     define("USUARIO_BASE","root");
     define("PASSWORD_BASE","");
 ?>

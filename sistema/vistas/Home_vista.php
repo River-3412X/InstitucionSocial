@@ -1,61 +1,93 @@
 <?php
     require_once "encabezados/Header.php";
 ?>
-<link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/main.css"/>
-<div id="page-wrapper">
+<!-- <link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/main.css"/> -->
+<link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/slider.css"/>
 
-    <!-- Header -->
-    <div id="header">
+<nav class="navbar navbar-expand-md navbar-dark" style="background-color:#5a6e78">
+ <div class="container">
+ 
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
 
-        <!-- Logo -->
-        <h1><a href="index.html" id="logo">Parroquia de la Santisima Trinidad y <br>
-                <center>Santa Maria de Guadalupe</center>
-            </a></h1>
+  <div class="collapse navbar-collapse " id="navbarSupportedContent" style="font-family:old Standard;">
+    <ul class="navbar-nav w-100 justify-content-between" style="color:#f5f0ed">
+      <li class="nav-item active">
+        <a class="nav-link" href="#">Inicio</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">¿Quiénes somos?</a>
+      </li>
 
-        <!-- Nav -->
-        <nav id="nav">
-            <ul>
-                <li class="current"><a href="index.html">Inició</a></li>
-
-                <li><a href="left-sidebar.html">¿Quiénes somos?</a></li>
-                <li>
-                    <a href="#">Sacramento</a>
-                    <ul>
-                        <li><a href="#">Bautismo</a></li>
-                        <li><a href="#">Comunión</a></li>
-                        <li><a href="#">Confirmación</a></li>
-                        <li><a href="#">Matrimonio</a></li>
-                    </ul>
-                </li>
-
-                <li><a href="index.html">Citas</a></li>
-                <li><a href="index.php">Chat</a></li>
-                <li><a href="<?php echo DOMINIO; ?>/home/login">Acceder</a></li>
-            </ul>
-        </nav>
-
-    </div>
-
-    <!-- Banner -->
-    <section id="banner">
-        <header>
-            <!-- Banner 	<h2>Arcana: <em>A responsive site template freebie by <a href="http://html5up.net">HTML5 UP</a></em></h2>
-            <a href="#" class="button">Learn More</a> -->
-        </header>
-    </section>
-
-    <!-- Highlights -->
-
-
-    <!-- Gigantic Heading -->
-    <section class="wrapper style2">
-        <div class="container">
-            <header class="major">
-                <h2>TRASMISIÓN</h2>
-                <iframe src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FLaSantisimaTrinidadySantaMariadeGuadalupe%2Fvideos%2F2796586137219964%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
-            </header>
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Sacramento
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="#">Bautismo</a>
+          <a class="dropdown-item" href="#">Comunión</a>
+          <a class="dropdown-item" href="#">Confirmación</a>
+          <a class="dropdown-item" href="#">Matrimonio</a>
         </div>
-    </section>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Citas</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="#">Chat</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="<?php echo DOMINIO; ?>/home/login">Acceder</a>
+      </li>
+    </ul>
+  </div>
+ </div>
+</nav>
+<div>
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+    <ol class="carousel-indicators">
+        <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+        <li data-target="#carouselExampleIndicators" data-slide-to="3"></li>
+    </ol>
+    <div class="carousel-inner">
+        <div class="carousel-item active">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/img9.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/img1.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/img2.jpeg" class="d-block w-100" alt="...">
+        </div>
+        <div class="carousel-item">
+            <img src="<?php echo DOMINIO;?>/public/assets/images/img3.jpeg" class="d-block w-100" alt="...">
+        </div>
+    </div>
+    <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+    </a>
+</div>
+
+
+<section>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-sm-10 offset-sm-1 col-md-8 offset-md-2">
+                <h2 class="text-center">TRASMISIÓN</h2>
+                <iframe  style="width:100%;" src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2FLaSantisimaTrinidadySantaMariadeGuadalupe%2Fvideos%2F2796586137219964%2F&show_text=false&width=560" width="560" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+            </div>
+        </div>
+    </div>
+</section>
 
     <!-- Posts -->
     <section class="wrapper style1">
@@ -138,11 +170,7 @@
 </div>
 <!-- Scripts -->
 <script src="<?php echo DOMINIO;?>/public/assets/js/jquery.min.js"></script>
-<script src="<?php echo DOMINIO;?>/public/assets/js/jquery.dropotron.min.js"></script>
-<script src="<?php echo DOMINIO;?>/public/assets/js/browser.min.js"></script>
-<script src="<?php echo DOMINIO;?>/public/assets/js/breakpoints.min.js"></script>
-<script src="<?php echo DOMINIO;?>/public/assets/js/util.js"></script>
-<script src="<?php echo DOMINIO;?>/public/assets/js/main.js"></script>
+
 
 <?php
 require_once "encabezados/Footer.php";
