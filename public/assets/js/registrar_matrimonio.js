@@ -234,9 +234,33 @@ $().ready(function(){
             this.value=null;
         }
     });
+    var array= [
+        "#actanacimientonovia",
+        "#comprobantedomicilionovia",
+        "#comprobantebautizonovia",
+        "#certificadoconfirmacionnovia",
+        "#actanacimientonovio",
+        "#comprobantedomicilionovio",
+        "#comprobantebautizonovio",
+        "#certificadoconfirmacionnovio",
+        "#actamatrimoniopadrinos",
+        "#nombre_novia",
+        "#apellidos_novia",
+        "#nombre_novio",
+        "#apellidos_novio",
+        "#nombre_madrina",
+        "#apellidos_madrina",
+        "#nombre_padrino",
+        "#apellidos_padrino",
+        "#fecha_boda",
+        "#hora_boda",
+        "#date",
+        "#hora",
+        "#motivo"
+    ];
     $("#formulario").submit(function(e){
         e.preventDefault();
-        if(!validaciones()){
+        if(!validaciones(array)){
             return false;
         }
         else{
@@ -316,42 +340,18 @@ $().ready(function(){
         }
         
     });
-    function validaciones(){
-        var array= [
-            "#actanacimientonovia",
-            "#comprobantedomicilionovia",
-            "#comprobantebautizonovia",
-            "#certificadoconfirmacionnovia",
-            "#actanacimientonovio",
-            "#comprobantedomicilionovio",
-            "#comprobantebautizonovio",
-            "#certificadoconfirmacionnovio",
-            "#actamatrimoniopadrinos",
-            "#nombre_novia",
-            "#apellidos_novia",
-            "#nombre_novio",
-            "#apellidos_novio",
-            "#nombre_madrina",
-            "#apellidos_madrina",
-            "#nombre_padrino",
-            "#apellidos_padrino",
-            "#fecha_boda",
-            "#hora_boda",
-            "#date",
-            "#hora",
-            "#motivo"
-        ];
-        var error=true;
-        array.forEach(function(valor){
-            if( $(valor).val()==""){
-               $("#contenido_modal_danger").html("Completa los campos correctamente");
-               $("#modal_danger").modal("show");
-               error=false;
-               return false;
-            }
-        });
-        return error;
-    }
+    
+    
+    validar_campos("#nombre_novia");
+    validar_campos("#apellidos_novia");
+    validar_campos("#nombre_novio");
+    validar_campos("#apellidos_novio");
+    validar_campos("#nombre_madrina");
+    validar_campos("#apellidos_madrina");
+    validar_campos("#nombre_padrino");
+    validar_campos("#apellidos_padrino");
+    validar_campos("#motivo");
+    
 });
 
 

@@ -7,7 +7,7 @@ class Matrimonio
     $hora_boda, $fecha_cita,$hora_cita,$motivo_cita)
     {
         $base = new Base();
-        $sql="SELECT count(*) as existe matrimonios  where fecha=:fecha and horaboda=:horaboda";
+        $sql="SELECT count(*) as existe from matrimonios  where fecha=:fecha and horaboda=:horaboda";
 
         $parametros=[
             ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR],
@@ -18,7 +18,7 @@ class Matrimonio
             return "La hora de la boda ya está ocupada selecciona otra";
         }
         else{
-            $sql="SELECT count(*) as existe cita  where fecha=:fecha and hora=:hora";
+            $sql="SELECT count(*) as existe from cita  where fecha=:fecha and hora=:hora";
 
             $parametros=[
                 ["etiqueta"=>"fecha","valor"=>$fecha_cita,"parametro"=>PDO::PARAM_STR],

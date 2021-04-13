@@ -5,6 +5,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100&display=swap');
 </style>
 <script src="<?php echo DOMINIO; ?>/public/assets/js/registrar_matrimonio.js" type="text/javascript"></script>
+<script src="<?php echo DOMINIO; ?>/public/assets/js/validacion_entrada_de_campos.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo DOMINIO; ?>/public/assets/css/estilos_hora.css">
 <script src="<?php echo DOMINIO; ?>/public/assets/js/controlcita.js" type="text/javascript"></script>
 
@@ -28,13 +29,13 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="txtnombre">Nombre Novia</label>
-                                <input type="text" name="txtnombre" placeholder="Nombre de la Novia" required="required"
+                                <input type="text" name="txtnombre" placeholder="Nombre de la Novia" 
                                     class="form-control" id="nombre_novia">
                             </div>
                             <div class="form-group">
                                 <label for="txtapellido">Apellidos Novia</label><br>
                                 <input type="text" name="txtapellido" placeholder="Apellidos de la Novia"
-                                    required="required" class="form-control" id="apellidos_novia">
+                                     class="form-control" id="apellidos_novia">
                             </div>
                             <div class="input-file">
                                 <label for="actanacimientonovia">Acta de Nacimiento</label>
@@ -75,7 +76,7 @@
                         <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <label for="txtnom">Nombre Novio</label>
-                                <input type="text" name="txtnom" placeholder="Nombre del Novio" required="required"
+                                <input type="text" name="txtnom" placeholder="Nombre del Novio" 
                                     class="form-control" id="nombre_novio">
                             </div>
 
@@ -123,24 +124,24 @@
                     <h3 class="text-center">Datos de los Padrinos</h3>
                     <div class="form-group ">
                         <label for="txtnmad">Nombre Madrina</label>
-                        <input type="text" name="txtnmad" placeholder="Nombre de la Madrina" required="required"
+                        <input type="text" name="txtnmad" placeholder="Nombre de la Madrina" 
                             class="form-control" id="nombre_madrina">
                     </div>
                     <div class="form-group ">
                         <label for="txtamad"> Apellidos Madrina</label>
-                        <input type="text" name="txtamad" placeholder="Apellidos de la Madrina" required="required"
+                        <input type="text" name="txtamad" placeholder="Apellidos de la Madrina" 
                             class="form-control" id="apellidos_madrina">
 
                     </div>
                     <div class="form-group ">
                         <label for="txtnpad"> Nombre Padrino</label>
-                        <input type="text" name="txtnpad" placeholder="Nombre del Padrino" required="required"
+                        <input type="text" name="txtnpad" placeholder="Nombre del Padrino" 
                             class="form-control" id="nombre_padrino">
 
                     </div>
                     <div class="form-group ">
                         <label for="txtapad"> Apellidos Padrino</label>
-                        <input type="text" name="txtapad" placeholder="Apellidos del Padrino" required="required"
+                        <input type="text" name="txtapad" placeholder="Apellidos del Padrino" 
                             class="form-control" id="apellidos_padrino">
 
                     </div>
@@ -159,7 +160,7 @@
                         <div class="col-12 col-sm-6">
                             <div class="from-group">
                                 <label for="txtfecha">Fecha Boda</label>
-                                <input id="fecha_boda" type="date" name="txtfecha" placeholder="" required="required"
+                                <input id="fecha_boda" type="date" name="txtfecha" placeholder="" 
                                     class="form-control"
                                     min="<?php
                                                                                                                             $fecha = Date('d-m-Y');
@@ -176,7 +177,7 @@
                             <div class="form-group">
 
                                 <label for="hora">Hora</label>
-                                <input type="time" name="hora" class="form-control" required style="display:none"
+                                <input type="time" name="hora" class="form-control"  style="display:none"
                                     id="hora_boda">
                                 <div class="contenedor-hora" id="contenedor-hora-matrimonio">
                                     <ul>

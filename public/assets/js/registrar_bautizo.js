@@ -2,7 +2,7 @@ $().ready(function(){ // aqui indico cuando esta lista la página (o haya cargad
     // primer cosa selector $("").
     //# : se ocupa para los id
     //.:se ocupa para clases
-
+    tabs();
     document.getElementById("actadenacimiento").addEventListener("change",function(){
         var extensiones = /(.pdf|.PDF)$/i;
         if($(this).value!=""){
@@ -94,4 +94,100 @@ $().ready(function(){ // aqui indico cuando esta lista la página (o haya cargad
             }
         });
     });
+
+    var array =[
+        "#telefono",
+        "#fecha_bautizo",
+        "#actadenacimiento",
+        "#hora_boda",
+        "#comprobante",
+        "#nombre",
+        "#apellidos",
+        "#nombre_madre",
+        "#apellidos_madre",
+        "#nombre_padre",
+        "#apellidos_padre",
+        "#nombre_madrina",
+        "#apellidos_madrina",
+    ];
+    $("#formulario").submit(function(e){
+        e.preventDefault();
+        if(!validaciones(array)){
+            return false; 
+        }
+    });
+    validar_campos("#nombre");
+    validar_campos("#apellidos");
+    validar_campos("#nombre_madre");
+    validar_campos("#apellidos_madre");
+    validar_campos("#nombre_padre");
+    validar_campos("#apellidos_padre");
+    validar_campos("#nombre_madrina");
+    validar_campos("#apellidos_madrina");
 });
+
+
+var arreglo_tabs = [
+    "contenido_uno",
+    "contenido_dos",
+    "contenido_tres",
+    "contenido_cuatro"
+];
+var arreglo_botones=[
+    "uno",
+    "dos",
+    "tres",
+    "cuatro"
+];
+var active=0;
+function tabs(){
+    $("#"+arreglo_tabs[active]).toggleClass("active");
+    $("#"+arreglo_botones[active]).toggleClass("active");
+    eventos();
+}
+
+function eventos(){
+    $("#uno").click(function(){
+        cambiar_tab(0);
+    });
+    $("#dos").click(function(){
+        cambiar_tab(1);
+    });
+    $("#tres").click(function(){
+        cambiar_tab(2);
+    });
+    $("#cuatro").click(function(){
+        cambiar_tab(3);
+    });
+}
+
+function cambiar_tab(id){
+    if(id==0){
+        $("#button_back").css("display","none");
+        $("#button_next").css("display","block");
+    }
+    else{
+        if(id==arreglo_botones.length-1){
+            $("#button_next").css("display","none");
+            $("#button_back").css("display","block");
+        }
+        else{
+            $("#button_back").css("display","block");
+            $("#button_next").css("display","block");
+        }
+    }
+    $("#"+arreglo_tabs[active]).toggleClass("active");
+    $("#"+arreglo_botones[active]).toggleClass("active");
+    active=id;
+    $("#"+arreglo_tabs[active]).toggleClass("active");
+    $("#"+arreglo_botones[active]).toggleClass("active");
+}
+
+function tab_anterior(){
+    let n =active-1;
+    cambiar_tab(n);
+}
+function tab_siguiente(){
+    let n=active+1;
+    cambiar_tab(n);
+}
