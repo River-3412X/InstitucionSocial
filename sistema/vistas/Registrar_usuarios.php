@@ -13,7 +13,7 @@
                 <h1 class="text-center">Registrarse</h1>
                 <div class="contenedor">
                     <div class="form-group">
-                        <label for="nombre">Nombre</label>
+                        <label for="nombre">Nombre Completo</label>
                         <input type="text" name="nombre" placeholder="Nombre" required="required" class="form-control">
                     </div>
 
@@ -23,7 +23,7 @@
                     </div>
 
                     <div class="form-group">
-                        <label for="email">Nombre de email</label>
+                        <label for="email">Correo electrónico</label>
                         <input type="text" name="email" placeholder="Email" required="required" class="form-control">
                     </div>
 
@@ -34,7 +34,7 @@
                     <input type="submit" value="Registrarse" class="btn btn-block" style="background-color:#c2b5a5; color:black;" >
                     
                     <p class="text-center">Al registrarte, aceptas nuestras Condiciones de uso y Política de privacidad.</p>
-                    <p class="text-center">¿Ya tienes una cuenta?<a class="link" href="<?php echo DOMINIO; ?>/home/login">Iniciar Sesion</a></p>
+                    <p class="text-center">¿Ya tienes una cuenta?<a class="link" href="<?php echo DOMINIO; ?>/home/login">Iniciar Sesión</a></p>
                 </div>
             </form>
         </div>

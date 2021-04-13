@@ -16,6 +16,8 @@ include_once "encabezados/Header.php";
                 <li><a href="index.html">inicio</a></li>
                 <li><a href="<?php echo DOMINIO; ?>/bautizos/registrar">Bautizo</a></li>
                 <li><a href="<?php echo DOMINIO; ?>/matrimonios/registrar">Matrimonio</a></li>
+                <li><a href="<?php echo DOMINIO; ?>/comuniones/registrar">Comunión</a></li>
+                <li><a href="<?php echo DOMINIO; ?>/confirmaciones/registrar">Confirmación</a></li>
                 <li><a href="<?php echo DOMINIO; ?>/home/cerrar_sesion">Salir</a></li>
                
             </ul>

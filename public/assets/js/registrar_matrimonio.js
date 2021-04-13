@@ -296,7 +296,7 @@ $().ready(function(){
                         $("#contenido_modal_success").html(respuesta);
                         $("#modal_success").modal("show");
                         $('#modal_success').on('hidden.bs.modal', function (e) {
-                            location.reload();
+                            location.href=$("#ruta").attr("href");
                           });
                     }
                     else{

@@ -158,4 +158,9 @@ alter table comunion drop column fecha_month;
 alter table comunion drop column fecha_day;
 alter table comunion add fecha_nacimiento date;
 
+alter table bautizos add nombrepad VARCHAR(50);
+alter table bautizos add apepad VARCHAR(50);
+alter table bautizos add actadenacimiento TEXT;
+alter table bautizos add comprobate TEXT;
+
 
