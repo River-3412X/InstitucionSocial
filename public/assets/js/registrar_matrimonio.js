@@ -380,7 +380,75 @@ var arreglo_botones=[
     "tres",
     "cuatro"
 ];
+var arreglo_validaciones=[
+    [
+        "#actanacimientonovia",
+        "#comprobantedomicilionovia",
+        "#comprobantebautizonovia",
+        "#certificadoconfirmacionnovia",
+        "#nombre_novia",
+        "#apellidos_novia",
+    ],
+    [
+        "#actanacimientonovio",
+        "#comprobantedomicilionovio",
+        "#comprobantebautizonovio",
+        "#certificadoconfirmacionnovio",
+        "#nombre_novio",
+        "#apellidos_novio",
+    ],
+    [
+        "#nombre_madrina",
+        "#apellidos_madrina",
+        "#nombre_padrino",
+        "#apellidos_padrino",
+        "#actamatrimoniopadrinos",
+    ],
+    [
+        "#fecha_boda",
+        "#hora_boda",
+        "#date",
+        "#hora",
+        "#motivo"
+    ]
+];
+var arreglo_nombres=[
+    [
+        "Acta de Nacimiento Novia",
+        "#comprobantedomicilionovia",
+        "#comprobantebautizonovia",
+        "#certificadoconfirmacionnovia",
+        "#nombre_novia",
+        "#apellidos_novia",
+    ],
+    [
+        "#actanacimientonovio",
+        "#comprobantedomicilionovio",
+        "#comprobantebautizonovio",
+        "#certificadoconfirmacionnovio",
+        "#nombre_novio",
+        "#apellidos_novio",
+    ],
+    [
+        "#nombre_madrina",
+        "#apellidos_madrina",
+        "#nombre_padrino",
+        "#apellidos_padrino",
+        "#actamatrimoniopadrinos",
+    ],
+    [
+        "#fecha_boda",
+        "#hora_boda",
+        "#date",
+        "#hora",
+        "#motivo"
+    ]
+];
+var array_tab_valid=[
+    false,false,false,false
+];
 var active=0;
+var active_valid=false;
 function tabs(){
     $("#"+arreglo_tabs[active]).toggleClass("active");
     $("#"+arreglo_botones[active]).toggleClass("active");
@@ -389,15 +457,19 @@ function tabs(){
 
 function eventos(){
     $("#uno").click(function(){
+        
         cambiar_tab(0);
     });
     $("#dos").click(function(){
+        if(active>1 || array_tab_valid[0] )
         cambiar_tab(1);
     });
     $("#tres").click(function(){
+        if(active>2 || array_tab_valid[0] && array_tab_valid[1])
         cambiar_tab(2);
     });
     $("#cuatro").click(function(){
+        if(active>3 || array_tab_valid[0] && array_tab_valid[1] && array_tab_valid[2])
         cambiar_tab(3);
     });
 }
@@ -425,10 +497,36 @@ function cambiar_tab(id){
 }
 
 function tab_anterior(){
-    let n =active-1;
-    cambiar_tab(n);
+   let n =active-1;
+   cambiar_tab(n);
 }
 function tab_siguiente(){
-    let n=active+1;
-    cambiar_tab(n);
+    active_valid=true;
+    var cadena="";
+    var contador=0;
+    arreglo_validaciones[active].forEach(function(elemento,index){
+        if($(elemento).val()==""){
+            active_valid=false;   
+            cadena+=arreglo_nombres[active][index]+"<br>";
+            contador++;
+        }
+    });
+    if(active_valid){
+        array_tab_valid[active]=true;
+        let n=active+1;
+        cambiar_tab(n);
+    }
+    else{
+        array_tab_valid[active]=false;
+        var cad= "";
+        if(contador==1){
+            cad="El campo: <br> "+cadena+" es requerido";
+        }
+        else{
+            cad="Los campos <br>"+cadena+" son requeridos";
+        }
+        $("#contenido_modal_danger").html(cad);
+        $("#modal_danger").modal("show");
+    }
 }
+
