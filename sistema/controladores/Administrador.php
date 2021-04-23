@@ -5,6 +5,7 @@
             $this->modelo=$this->cargarModelo("Administradores");
         }
         public function index(){
+            verificarSesion("Administrador");
             $parametros=[
                 "citas"=>$this->modelo->consultar_citas()
             ];
