@@ -305,7 +305,6 @@ $().ready(function(){
                             let porcentaje =Math.floor((event.loaded/event.total)*100);
                             $("#progress_bar_content").css("width",porcentaje+"%");
                             $("#progress_bar_content").html("Registrando: "+porcentaje+"%");
-                            console.log("el progreso es: "+porcentaje);
                         }
                     });
                     return xhr;

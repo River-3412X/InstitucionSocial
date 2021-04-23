@@ -4,7 +4,7 @@
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Exo:wght@100&display=swap');
 </style>
-<script src="<?php echo DOMINIO; ?>/public/assets/js/registrar_matrimonio.js" type="text/javascript"></script>
+<script src="<?php echo DOMINIO; ?>/public/assets/js/registros/registrar_matrimonio.js" type="text/javascript"></script>
 <script src="<?php echo DOMINIO; ?>/public/assets/js/validacion_entrada_de_campos.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo DOMINIO; ?>/public/assets/css/estilos_hora.css">
 <script src="<?php echo DOMINIO; ?>/public/assets/js/controlcita.js" type="text/javascript"></script>

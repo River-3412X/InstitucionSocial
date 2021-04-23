@@ -1,7 +1,7 @@
 <?php require_once "encabezados/Header.php"; ?>
 
 <link rel="stylesheet" href="<?php echo DOMINIO;?>/public/assets/css/estilos.css" />
-<script src="<?php echo DOMINIO;?>/public/assets/js/registrar_usuario.js"></script>
+<script src="<?php echo DOMINIO;?>/public/assets/js/registros/registrar_usuario.js"></script>
 
 <div class="container" id="login">
     <div class="row m-0 p-0 container_login shadow">

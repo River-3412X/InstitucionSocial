@@ -3,6 +3,19 @@ Primero se tiene que crear los roles de los 2 tipos o niveles de usuario (copiar
 insert into rol(idrol,rol) values(1,'Administrador');
 insert into rol(idrol,rol) values(2,'Usuario');
 
+después insertar los niveles manualmente
+
+insert into nivel (nivel) values ("Uno");
+insert into nivel (nivel) values ("Dos");
+insert into nivel (nivel) values ("Tres");
+insert into nivel (nivel) values ("Cuatro");
+insert into nivel (nivel) values ("Cinco");
+insert into nivel (nivel) values ("Seis");
+insert into nivel (nivel) values ("Siete");
+
+insert into nivel (nivel) values ("Ocho");
+insert into nivel (nivel) values ("Nueve");
+
 ===============================================================================================================
 para crear un nuevo "recurso,elemento o funcionalidad " del sistema se tiene que hacer lo siguiente:
 

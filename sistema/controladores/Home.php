@@ -11,8 +11,6 @@
         // dominio/home/login
         // aqui no es necesario escribir mayusculas, se recomienda que uses minusculas
         public function login(){ 
-            
-            
             if($_SERVER['REQUEST_METHOD']=="GET"){ //verirfica que el metodo por el que estas entrando a la pagina sea get
                 verificarSesionLogin(); //verificar las sesiones por el login y solo se hacen dentro de las peticiones get
                 $this->cargarVista("Login_vista");
@@ -30,7 +28,7 @@
             }
         }
         public function usuario(){
-            verificarSesion(); // se isa cuando ya esta dentro de la sesion verificar si existe una sesion, y solo se hacen en los metodos get, los post se ignoran
+            verificarSesion("Usuario"); // se isa cuando ya esta dentro de la sesion verificar si existe una sesion, y solo se hacen en los metodos get, los post se ignoran
             $this->cargarVista("Interfaz_usuario");
         }
         //agregué este método para cerrar sesión aqui, ya que puedes hacerlo en cualquier controlador
@@ -59,7 +57,7 @@
                     $password= trim($_POST['password']);
                     
                     $this->modelo=$this->cargarModelo("Usuarios");
-                    echo $this->modelo->registar_usuario($nombre,$correo,$usuario,$password);
+                    echo $this->modelo->registar_usuario($nombre,$correo,$usuario,$password,2);
                 }
             }
         }

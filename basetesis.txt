@@ -115,10 +115,15 @@ apellidospadre VARCHAR(50),
 telefono INT(10), 
 fecha date,
 horabautizo VARCHAR(20),
+nombrepad VARCHAR(50),
+apepad VARCHAR(50),
+actadenacimiento TEXT,
+comprobate TEXT,
 idusuario INT,
 PRIMARY KEY (idbautizo),
 FOREIGN KEY (idusuario) references usuario(idusuario) 
 ON DELETE CASCADE ON UPDATE CASCADE);
+
 
 create table cita (
 idcita INT AUTO_INCREMENT,
@@ -162,5 +167,3 @@ alter table bautizos add nombrepad VARCHAR(50);
 alter table bautizos add apepad VARCHAR(50);
 alter table bautizos add actadenacimiento TEXT;
 alter table bautizos add comprobate TEXT;
-
-

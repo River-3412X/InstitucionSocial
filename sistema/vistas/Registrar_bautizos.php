@@ -1,7 +1,7 @@
 <?php require_once "encabezados/Header.php" ?>
 
 <link rel="stylesheet" href="<?php echo DOMINIO; ?>/public/assets/css/estilos_matrimonio.css">
-<script src="<?php echo DOMINIO; ?>/public/assets/js/registrar_bautizo.js" type="text/javascript"></script>
+<script src="<?php echo DOMINIO; ?>/public/assets/js/registros/registrar_bautizo.js" type="text/javascript"></script>
 <script src="<?php echo DOMINIO; ?>/public/assets/js/validacion_entrada_de_campos.js" type="text/javascript"></script>
 <link rel="stylesheet" href="<?php echo DOMINIO; ?>/public/assets/css/estilos_hora.css">
 <style>
@@ -95,24 +95,31 @@
 
                     <div class="form-group">
                         <label for="hora">Hora</label>
-                        <input type="time" name="hora" class="form-control" style="display:none" id="hora_boda">
-                        <div class="contenedor-hora" id="contenedor-hora-matrimonio">
+                        <input type="time" name="hora" class="form-control" style="display:none" id="hora">
+                        <div class="contenedor-hora" id="contenedor-hora">
                             <ul>
-                                <li><button id="btnb1" onclick="cambiar_hora_boda('12:00','btnb1')" type="button">12:00pm -
+                                <li><button id="btn1" onclick="cambiar_hora('12:00','btn1')" type="button">12:00pm -
                                         13:00pm</button></li>
-                                <li><button id="btnb2" onclick="cambiar_hora_boda('13:00','btnb2')" type="button">13:00pm -
+                                <li><button id="btn2" onclick="cambiar_hora('13:00','btn2')" type="button">13:00pm -
                                         14:00pm</button></li>
-                                <li><button id="btnb3" onclick="cambiar_hora_boda('14:00','btnb3')" type="button">14:00pm -
+                                <li><button id="btn3" onclick="cambiar_hora('14:00','btn3')" type="button">14:00pm -
                                         15:00pm</button></li>
-                                <li><button id="btnb4" onclick="cambiar_hora_boda('17:00','btnb4')" type="button">17:00pm -
+                                <li><button id="btn4" onclick="cambiar_hora('17:00','btn4')" type="button">17:00pm -
                                         18:00pm</button></li>
-                                <li><button id="btnb5" onclick="cambiar_hora_boda('18:00','btnb5')" type="button">18:00pm -
+                                <li><button id="btn5" onclick="cambiar_hora('18:00','btn5')" type="button">18:00pm -
                                         19:00pm</button></li>
                             </ul>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <button type="submit" class="btn btn-primary">Guardar</button>
+                    <div class="progress my-2" id="progress_bar" style="display:none">
+                        <div class="progress-bar progress-bar-striped progress-bar-animated bg-success"
+                            role="progressbar" style="width: 0%" aria-valuemin="0" aria-valuemax="100"
+                            id="progress_bar_content">
+                            cargando: 0%
+                        </div>
+                    </div>
+                    <div class="row justify-content-end" >
+                        <button type="submit" class="btn btn-primary" id="btn_register" style="position:relative; top:90px">Registrar</button>
                     </div>
                 </div>
             </div>
@@ -127,6 +134,8 @@
     </form>
 </div>
 <br><br>
+<a href="<?php echo DOMINIO; ?>/home/usuario" id="ruta" style="display:none"></a>
+<a href="<?php echo DOMINIO; ?>/bautizos/cambiar_hora" id="boton" style="display:none"></a>
 <?php
 require_once "alertas/alertas.php";
 require_once "encabezados/Footer.php"; ?>

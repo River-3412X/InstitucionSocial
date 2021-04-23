@@ -1,33 +1,51 @@
 <?php
 class Matrimonio
 {
-    public function registrar($nombreNovia, $apellidosNovia, $nombreNovio, $apellidosNovio, $fecha, 
-    $nombreMadrina, $apellidosMadrina, $nombrePadrino, $apellidosPadrino, $ann, $comnovia, $cbanovia, 
-    $ctdna, $actno, $cdno, $cbno, $ccno, $amp,
-    $hora_boda, $fecha_cita,$hora_cita,$motivo_cita)
-    {
+    public function registrar(
+        $nombreNovia,
+        $apellidosNovia,
+        $nombreNovio,
+        $apellidosNovio,
+        $fecha,
+        $nombreMadrina,
+        $apellidosMadrina,
+        $nombrePadrino,
+        $apellidosPadrino,
+        $ann,
+        $comnovia,
+        $cbanovia,
+        $ctdna,
+        $actno,
+        $cdno,
+        $cbno,
+        $ccno,
+        $amp,
+        $hora_boda,
+        $fecha_cita,
+        $hora_cita,
+        $motivo_cita
+    ) {
         $base = new Base();
-        $sql="SELECT count(*) as existe from matrimonios  where fecha=:fecha and horaboda=:horaboda";
+        $sql = "SELECT count(*) as existe from matrimonios  where fecha=:fecha and horaboda=:horaboda";
 
-        $parametros=[
-            ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR],
-            ["etiqueta"=>"horaboda","valor"=>$hora_boda,"parametro"=>PDO::PARAM_STR]
+        $parametros = [
+            ["etiqueta" => "fecha", "valor" => $fecha, "parametro" => PDO::PARAM_STR],
+            ["etiqueta" => "horaboda", "valor" => $hora_boda, "parametro" => PDO::PARAM_STR]
         ];
-        $resp=$base->consultarRegistro($sql,$parametros);
-        if($resp->existe>0){
+        $resp = $base->consultarRegistro($sql, $parametros);
+        if ($resp->existe > 0) {
             return "La hora de la boda ya está ocupada selecciona otra";
-        }
-        else{
-            $sql="SELECT count(*) as existe from cita  where fecha=:fecha and hora=:hora";
+        } else {
+            $sql = "SELECT count(*) as existe from cita  where fecha=:fecha and hora=:hora";
 
-            $parametros=[
-                ["etiqueta"=>"fecha","valor"=>$fecha_cita,"parametro"=>PDO::PARAM_STR],
-                ["etiqueta"=>"hora","valor"=>$hora_cita,"parametro"=>PDO::PARAM_STR]
+            $parametros = [
+                ["etiqueta" => "fecha", "valor" => $fecha_cita, "parametro" => PDO::PARAM_STR],
+                ["etiqueta" => "hora", "valor" => $hora_cita, "parametro" => PDO::PARAM_STR]
             ];
-            $resp=$base->consultarRegistro($sql,$parametros);
-            if($resp->existe>0){
+            $resp = $base->consultarRegistro($sql, $parametros);
+            if ($resp->existe > 0) {
                 return "La hora de la cita ya está ocupada selecciona otra";
-            }   
+            }
         }
 
         $annName = $this->subir_archivo($ann['tmp_name'], $ann['name']);
@@ -49,7 +67,7 @@ class Matrimonio
         // $ccNoo = "un registro";
         // $amps = "un registro";
         session_start();
-        $id_usuario=$_SESSION['id'];
+        $id_usuario = $_SESSION['id'];
 
         $sql = "insert into matrimonios 
         (nomnovia,apellidonovia,nomnovio,
@@ -64,7 +82,7 @@ class Matrimonio
         :nombrePadrino,:apellidosPadrino,:annName,:comNovia,:cbNovia,
         :ctdNA,:acTAno,:cdnoo,:cbNoo,:ccNoo,:amps,:horaboda,:idusuario)";
         $parametros = [
-            
+
             ["etiqueta" => "nombreNovia", "valor" => $nombreNovia, "parametro" => PDO::PARAM_STR],
             ["etiqueta" => "apellidosNovia", "valor" => $apellidosNovia, "parametro" => PDO::PARAM_STR],
             ["etiqueta" => "nombreNovio", "valor" => $nombreNovio, "parametro" => PDO::PARAM_STR],
@@ -88,13 +106,13 @@ class Matrimonio
             ["etiqueta" => "idusuario", "valor" => $id_usuario, "parametro" => PDO::PARAM_INT],
 
         ];
-        
+
         if ($base->insertar($sql, $parametros)) {
 
-            $sql="INSERT INTO cita (idusuario,fecha,hora,motivo)
+            $sql = "INSERT INTO cita (idusuario,fecha,hora,motivo)
             values(:id_usuario_etiqueta,:fecha_etiqueta,:hora_etiqueta,:motivo_etiqueta)";
 
-            $parametros=[
+            $parametros = [
                 ["etiqueta" => "id_usuario_etiqueta", "valor" => $id_usuario, "parametro" => PDO::PARAM_INT],
                 ["etiqueta" => "fecha_etiqueta", "valor" => $fecha_cita, "parametro" => PDO::PARAM_STR],
                 ["etiqueta" => "hora_etiqueta", "valor" => $hora_cita, "parametro" => PDO::PARAM_STR],
@@ -172,7 +190,7 @@ class Matrimonio
 
                     ];
                     //ejecutar metodo insertar de la base de datos
-                    $datos = $base->insertar($sql, $parametros); 
+                    $datos = $base->insertar($sql, $parametros);
                     if ($datos == 1) {
                         return "registro correcto";
                     }
@@ -192,15 +210,15 @@ class Matrimonio
         // OBJETO QUE PERMITE COMUNICACION CON LA BASE
         $datos = $base->consultarRegistro($q, $parametros);
         if ($datos->existe > 0) {
-            $sql="SELECT count(*) as existe from cita where idusuario=:idusuario and fecha=:fecha";
+            $sql = "SELECT count(*) as existe from cita where idusuario=:idusuario and fecha=:fecha";
             session_start();
-            $id_usuario=$_SESSION['id'];
-            $parametros=[
-                ["etiqueta"=>"idusuario","valor"=>$id_usuario,"parametro"=>PDO::PARAM_INT],
-                ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR]
+            $id_usuario = $_SESSION['id'];
+            $parametros = [
+                ["etiqueta" => "idusuario", "valor" => $id_usuario, "parametro" => PDO::PARAM_INT],
+                ["etiqueta" => "fecha", "valor" => $fecha, "parametro" => PDO::PARAM_STR]
             ];
-            $respuesta=$base->consultarRegistro($sql,$parametros);
-            if($respuesta->existe>0){
+            $respuesta = $base->consultarRegistro($sql, $parametros);
+            if ($respuesta->existe > 0) {
                 return '
                 <ul>
                     <li><button style="background-color:red;" type="button">10:00am - 11:00am</button></li>
@@ -211,38 +229,36 @@ class Matrimonio
                     <li><button style="background-color:red;" type="button">17:00pm - 18:00pm</button></li>
                 </ul>
             ';
-            }
-            else{
-                $sql="SELECT hora from cita where fecha=:fecha";
-                $parametros=[
-                    ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR]
+            } else {
+                $sql = "SELECT hora from cita where fecha=:fecha";
+                $parametros = [
+                    ["etiqueta" => "fecha", "valor" => $fecha, "parametro" => PDO::PARAM_STR]
                 ];
-                $citas=$base->consultar($sql,$parametros);
-                $citas_horas=[];
-                foreach($citas as $cita){
-                    $citas_horas[$cita->hora]=$cita->hora;
+                $citas = $base->consultar($sql, $parametros);
+                $citas_horas = [];
+                foreach ($citas as $cita) {
+                    $citas_horas[$cita->hora] = $cita->hora;
                 }
-                $horas=[
-                    "10:00","11:00","12:00","13:00","16:00","17:00"
+                $horas = [
+                    "10:00", "11:00", "12:00", "13:00", "16:00", "17:00"
                 ];
-                $retorno ="<ul>";
-                for($i =0; $i<count($horas); $i++){
-                    $ii=$i+1;
-                    $fin= Date($horas[$i]);
+                $retorno = "<ul>";
+                for ($i = 0; $i < count($horas); $i++) {
+                    $ii = $i + 1;
+                    $fin = Date($horas[$i]);
 
                     $temp = strtotime($fin);
                     $fecha_temporal = date("d-m-Y H:i:s", strtotime("+1 hour", $temp));
 
                     $fecha_completa = strtotime($fecha_temporal);
-                    $hora_final= date("H:i", $fecha_completa);
-                    if(array_search($horas[$i],$citas_horas)){
-                        $retorno.='<li><button style="background-color:red;" type="button">'.$horas[$i].' - '.$hora_final.'</button></li>' ;
-                    }
-                    else{
-                        $retorno.='<li><button id="btn'.$ii.'" onclick="cambiar_hora(' . "'".$horas[$i]."'" . ',' . "'btn".$ii."'" . ')" type="button">'.$horas[$i].' - '.$hora_final.'</button></li>';
+                    $hora_final = date("H:i", $fecha_completa);
+                    if (array_search($horas[$i], $citas_horas)) {
+                        $retorno .= '<li><button style="background-color:red;" type="button">' . $horas[$i] . ' - ' . $hora_final . '</button></li>';
+                    } else {
+                        $retorno .= '<li><button id="btn' . $ii . '" onclick="cambiar_hora(' . "'" . $horas[$i] . "'" . ',' . "'btn" . $ii . "'" . ')" type="button">' . $horas[$i] . ' - ' . $hora_final . '</button></li>';
                     }
                 }
-                $retorno.="</ul>";
+                $retorno .= "</ul>";
                 return $retorno;
             }
         } else {
@@ -258,7 +274,8 @@ class Matrimonio
         ';
         }
     }
-    function boton_citas_matrimonios($fecha){
+    function boton_citas_matrimonios($fecha)
+    {
 
         $base = new Base(); //CREA OBJETO 
 
@@ -269,15 +286,15 @@ class Matrimonio
         // OBJETO QUE PERMITE COMUNICACION CON LA BASE
         $datos = $base->consultarRegistro($q, $parametros);
         if ($datos->existe > 0) {
-            $sql="SELECT count(*) as existe from matrimonios where idusuario=:idusuario and fecha=:fecha";
+            $sql = "SELECT count(*) as existe from matrimonios where idusuario=:idusuario and fecha=:fecha";
             session_start();
-            $id_usuario=$_SESSION['id'];
-            $parametros=[
-                ["etiqueta"=>"idusuario","valor"=>$id_usuario,"parametro"=>PDO::PARAM_INT],
-                ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR]
+            $id_usuario = $_SESSION['id'];
+            $parametros = [
+                ["etiqueta" => "idusuario", "valor" => $id_usuario, "parametro" => PDO::PARAM_INT],
+                ["etiqueta" => "fecha", "valor" => $fecha, "parametro" => PDO::PARAM_STR]
             ];
-            $respuesta=$base->consultarRegistro($sql,$parametros);
-            if($respuesta->existe>0){
+            $respuesta = $base->consultarRegistro($sql, $parametros);
+            if ($respuesta->existe > 0) {
                 return '
                 <ul>
                     <li><button style="background-color:red;" type="button">10:00am - 11:00am</button></li>
@@ -288,48 +305,46 @@ class Matrimonio
                     <li><button style="background-color:red;" type="button">17:00pm - 18:00pm</button></li>
                 </ul>
             ';
-            }
-            else{
-                $sql="SELECT horaboda from matrimonios where fecha=:fecha";
-                $parametros=[
-                    ["etiqueta"=>"fecha","valor"=>$fecha,"parametro"=>PDO::PARAM_STR]
+            } else {
+                $sql = "SELECT horaboda from matrimonios where fecha=:fecha";
+                $parametros = [
+                    ["etiqueta" => "fecha", "valor" => $fecha, "parametro" => PDO::PARAM_STR]
                 ];
-                $citas=$base->consultar($sql,$parametros);
-                $citas_horas=[];
-                foreach($citas as $cita){
-                    $citas_horas[$cita->horaboda]=$cita->horaboda;
+                $citas = $base->consultar($sql, $parametros);
+                $citas_horas = [];
+                foreach ($citas as $cita) {
+                    $citas_horas[$cita->horaboda] = $cita->horaboda;
                 }
-                $horas=[
-                    "12:00","13:00","14:00","17:00","18:00"
+                $horas = [
+                    "12:00", "13:00", "14:00", "17:00", "18:00"
                 ];
-                $retorno ="<ul>";
-                for($i =0; $i<count($horas); $i++){
-                    $ii=$i+1;
-                    $fin= Date($horas[$i]);
+                $retorno = "<ul>";
+                for ($i = 0; $i < count($horas); $i++) {
+                    $ii = $i + 1;
+                    $fin = Date($horas[$i]);
 
                     $temp = strtotime($fin);
                     $fecha_temporal = date("d-m-Y H:i:s", strtotime("+1 hour", $temp));
 
                     $fecha_completa = strtotime($fecha_temporal);
-                    $hora_final= date("H:i", $fecha_completa);
-                    if(array_search($horas[$i],$citas_horas)){
-                        $retorno.='<li><button style="background-color:red;" type="button">'.$horas[$i].' - '.$hora_final.'</button></li>' ;
-                    }
-                    else{
-                        $retorno.='<li><button id="btnb'.$ii.'" onclick="cambiar_hora_boda(' . "'".$horas[$i]."'" . ',' . "'btnb".$ii."'" . ')" type="button">'.$horas[$i].' - '.$hora_final.'</button></li>';
+                    $hora_final = date("H:i", $fecha_completa);
+                    if (array_search($horas[$i], $citas_horas)) {
+                        $retorno .= '<li><button style="background-color:red;" type="button">' . $horas[$i] . ' - ' . $hora_final . '</button></li>';
+                    } else {
+                        $retorno .= '<li><button id="btnb' . $ii . '" onclick="cambiar_hora_boda(' . "'" . $horas[$i] . "'" . ',' . "'btnb" . $ii . "'" . ')" type="button">' . $horas[$i] . ' - ' . $hora_final . '</button></li>';
                     }
                 }
-                $retorno.="</ul>";
+                $retorno .= "</ul>";
                 return $retorno;
             }
         } else {
             return '
         <ul>    
-            <li><button id="btnb1" onclick="cambiar_hora_boda('."'12:00'".','."'btnb1'".')" type="button">12:00pm - 13:00pm</button></li>
-            <li><button id="btnb2" onclick="cambiar_hora_boda('."'13:00'".','."'btnb2'".')" type="button">13:00pm - 14:00pm</button></li>
-            <li><button id="btnb3" onclick="cambiar_hora_boda('."'14:00'".','."'btnb3'".')" type="button">14:00pm - 15:00pm</button></li>
-            <li><button id="btnb4" onclick="cambiar_hora_boda('."'17:00'".','."'btnb4'".')" type="button">17:00pm - 18:00pm</button></li>
-            <li><button id="btnb5" onclick="cambiar_hora_boda('."'18:00'".','."'btnb5'".')" type="button">18:00pm - 19:00pm</button></li>
+            <li><button id="btnb1" onclick="cambiar_hora_boda(' . "'12:00'" . ',' . "'btnb1'" . ')" type="button">12:00pm - 13:00pm</button></li>
+            <li><button id="btnb2" onclick="cambiar_hora_boda(' . "'13:00'" . ',' . "'btnb2'" . ')" type="button">13:00pm - 14:00pm</button></li>
+            <li><button id="btnb3" onclick="cambiar_hora_boda(' . "'14:00'" . ',' . "'btnb3'" . ')" type="button">14:00pm - 15:00pm</button></li>
+            <li><button id="btnb4" onclick="cambiar_hora_boda(' . "'17:00'" . ',' . "'btnb4'" . ')" type="button">17:00pm - 18:00pm</button></li>
+            <li><button id="btnb5" onclick="cambiar_hora_boda(' . "'18:00'" . ',' . "'btnb5'" . ')" type="button">18:00pm - 19:00pm</button></li>
         </ul>
         ';
         }
