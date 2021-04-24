@@ -61,5 +61,6 @@
                 echo $this->modelo->eliminar_cita($id);
             }
         }
+        
     }
 ?>

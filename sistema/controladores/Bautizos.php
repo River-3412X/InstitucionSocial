@@ -64,7 +64,7 @@ class Bautizos extends Controlador
             }
         }
     }
-    public function modificar($id)
+    public function modificar($id=0)
     {
         if ($_SERVER['REQUEST_METHOD'] == "GET") {
             verificarSesion("Administrador"); //se verifica la sesion
@@ -97,7 +97,7 @@ class Bautizos extends Controlador
             }
         }
     }
-    public function eliminar($id){
+    public function eliminar($id=0){
         if($_SERVER['REQUEST_METHOD']=="POST"){
             echo $this->modelo->eliminar($id);
         }

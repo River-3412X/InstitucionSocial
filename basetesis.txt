@@ -99,8 +99,11 @@ comprobantebautizonovio TEXT,
 certificadoconfirmacionnovio TEXT, 
 actamatrimoniopadrinos TEXT,
 idusuario INT,
+idcita INT,
 PRIMARY KEY (idmatrimonio),
 FOREIGN KEY (idusuario) references usuario(idusuario) 
+ON DELETE CASCADE ON UPDATE CASCADE,
+FOREIGN KEY (idcita) references cita(idcita) 
 ON DELETE CASCADE ON UPDATE CASCADE);
 
 

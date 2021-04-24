@@ -33,13 +33,7 @@
 
                             <div class="from-group">
                                 <label for="txtfecha">Fecha de Nacimiento</label>
-                                <input id="fecha_niño" type="date" name="txtecha" placeholder="" class="form-control" min="<?php
-                                                                                                                                                $fecha = Date('d-m-Y');
-                                                                                                                                                $temp = strtotime($fecha);
-                                                                                                                                                $fecha_temporal = date("d-m-Y", strtotime("+1 month", $temp));
-                                                                                                                                                $fecha_completa = strtotime($fecha_temporal);
-                                                                                                                                                echo date("Y-m-d", $fecha_completa);
-                                                                                                                                                ?>">
+                                <input id="fecha_niño" type="date" name="txtecha" placeholder="" class="form-control" >
 
                             </div>
                             <div class="form-group ">

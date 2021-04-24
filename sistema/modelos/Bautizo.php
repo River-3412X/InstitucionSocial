@@ -186,7 +186,7 @@ class Bautizo
         $retorno = "";
         if ($bautizo) {
             $retorno = '
-            <h3 class="text-center" style="font-family:Exo;">REGISTRAR BAUTIZO</h3>
+            <h3 class="text-center" style="font-family:Exo;">MODIFICAR BAUTIZO</h3>
             <form action="#" method="post" id="formulario" accept-charset="utf-8" enctype="multipart/form-data">
                 <input type="hidden" value="' . $bautizo->idusuario . '" id="idusuario" name="idusuario">
                 <input type="hidden" value="'.$bautizo->idbautizo.'" id="idbautizo" name="idbautizo">
@@ -385,16 +385,19 @@ class Bautizo
                 ["etiqueta" => "idbautizo", "valor" => $datos['idbautizo'], "parametro" => PDO::PARAM_INT],                
             ];
             $bau=$base->consultarRegistro($sql,$parametros);
-            $actadenacimiento="";
-            if($datos['actadenacimiento']==""){
-                $actadenacimiento=$bau->actadenacimiento;
-            }else{
+
+            
+            $actadenacimiento=$bau->actadenacimiento;
+            $comprobante=$bau->comprobate;
+            
+
+            if($datos['actadenacimiento']['name']!=""){
+                unlink("assets/archivospdf/".$actadenacimiento);
                 $actadenacimiento = $this->subir_archivo($datos['actadenacimiento']["tmp_name"], $datos['actadenacimiento']["name"]);
             }
-            $comprobante="";
-            if($datos['comprobate']==""){
-                $comprobante=$bau->comprobate;
-            }else{
+            
+            if($datos['comprobate']['name']!=""){
+                unlink("assets/archivospdf/".$comprobante);
                 $comprobante = $this->subir_archivo($datos['comprobate']["tmp_name"], $datos['comprobate']["name"]);
             }
             
@@ -424,7 +427,7 @@ class Bautizo
                 ["etiqueta" => "comprobate", "valor" => $comprobante, "parametro" => PDO::PARAM_STR],
                 ["etiqueta" => "idbautizo", "valor" => $datos['idbautizo'], "parametro" => PDO::PARAM_INT],
             ];
-            if ($base->insertar($sql, $parametros) == 1) {
+            if ($base->modificar($sql, $parametros)) {
                 return "Se Modificó el registro correctamente";
             } else {
                 return "Error";
