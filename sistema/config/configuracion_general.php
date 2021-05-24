@@ -1,5 +1,9 @@
 <?php
+<<<<<<< HEAD
     define("DOMINIO","http://localhost/InstitucionSocial");
+=======
+    define("DOMINIO","http://192.168.0.8/InstitucionSocial");
+>>>>>>> be774c0d3573f391ea4460bcf096a455427430c4
     //define("ICONO",DOMINIO."/public/img/iconos/iconoPagina.png");
 //define("DOMINIO","http://parroquiadelasantisimatrinidad.com");
     define("TITULO","Institución Social");
