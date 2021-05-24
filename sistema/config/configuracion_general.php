@@ -1,5 +1,5 @@
 <?php
-    define("DOMINIO","http://localhost/sis");
+    define("DOMINIO","http://localhost/InstitucionSocial");
     //define("ICONO",DOMINIO."/public/img/iconos/iconoPagina.png");
 //define("DOMINIO","http://parroquiadelasantisimatrinidad.com");
     define("TITULO","Institución Social");
