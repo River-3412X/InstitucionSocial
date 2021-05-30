@@ -24,8 +24,8 @@ class Administradores
                     <td>{$cita->motivo}</td>
                     <td>
                         <div class='d-flex'>
-                            <a href='" . DOMINIO . "/administrador/modificar_cita/{$cita->id}' class='btn btn-sm btn-primary mr-2'>Modificar</a>
-                            <a href='" . DOMINIO . "/administrador/eliminar_cita/{$cita->id}' class='btn btn-sm btn-danger eliminar' >Eliminar</a>
+                            <a href='".DOMINIO."/administrador/modificar_cita/{$cita->id}' class='btn btn-sm btn-primary mr-2'>Modificar</a>
+                            <a href='".DOMINIO."/administrador/eliminar_cita/{$cita->id}' class='btn btn-sm btn-danger eliminar' >Eliminar</a>
                         </div>
                     </td>
 
@@ -254,14 +254,13 @@ class Administradores
         unlink("assets/archivospdf/{$matrimonio->comprobantebautizonovio}");
         unlink("assets/archivospdf/{$matrimonio->certificadoconfirmacionnovio}");
         unlink("assets/archivospdf/{$matrimonio->actamatrimoniopadrinos}");
-        
+
         $sql = "DELETE from cita where idcita=:idcita";
         $parametros = [
             ["etiqueta" => "idcita", "valor" => $id, "parametro" => PDO::PARAM_INT]
         ];
         if ($base->eliminarRegistro($sql, $parametros) > 0) {
             return "Se eliminó el registro correctamente";
-            
         } else {
             return "Error";
         }

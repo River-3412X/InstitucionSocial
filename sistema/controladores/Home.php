@@ -55,11 +55,10 @@
                     $correo= trim($_POST['email']);
                     $usuario= trim($_POST['usuario']);
                     $password= trim($_POST['password']);
-                    $codigo= trim($_POST['codigo']);
-                    $estado= trim($_POST['estado']);
+                    
                     
                     $this->modelo=$this->cargarModelo("Usuarios");
-                    echo $this->modelo->registar_usuario($nombre,$correo,$usuario,$password,2,$codigo,$estado);
+                    echo $this->modelo->registar_usuario($nombre,$correo,$usuario,$password,2);
                 }
 
             }
