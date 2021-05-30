@@ -110,6 +110,8 @@ class Usuarios
                 $comentario = '<p> Hola!<br>
                 Tu registro ha sido exitoso, solo necesitas activar tu cuenta!<br>
                 
+
+                
                 Para activar tu cuenta haz click en el siguiente enlace: </p> 
                 <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="http://parroquiadelasantisimatrinidad.com/home/activar/'.$usuario.'/'.$passHash.'">Activar cuenta</a> 
                 <br>';
