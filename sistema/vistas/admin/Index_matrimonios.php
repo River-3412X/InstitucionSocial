@@ -20,6 +20,17 @@ require_once "../sistema/vistas/encabezados/Header.php";
                 $(this).parent().find(".pop").toggleClass("disabled");
             });
         });
+        $("#formulario_buscador").submit(function(e){
+            e.preventDefault();
+            $.ajax({
+                url:$(this).attr("action"),
+                method:$(this).attr("method"),
+                data:$(this).serialize(),
+                success:function(respuesta){
+                    $("#tabla_matrimonios").html(respuesta);
+                }
+            });
+        });
     });
 </script>
 <style>
@@ -65,6 +76,15 @@ require_once "../sistema/vistas/encabezados/Header.php";
     require_once "menu.php";
     ?>
     <h3 class="text-center">Matrimonios</h3>
+    <div class="buscador">
+        <form action="<?php echo DOMINIO;?>/matrimonios/buscar" method="post" id="formulario_buscador">
+            <div class="d-flex justify-content-center mb-3" style="width:100%;">
+                <input type="text" name="buscador" id="buscador" class="form-control mr-1" placeholder="buscar matrimonios" style="width:40%;">    
+                <button class="btn btn-outline-primary" type="submit">Buscar</button>
+            </div>
+        </form>
+    </div>
+
     <div class="overflow-auto">
         <table class="table table-hover table-striped table-sm shadow">
             <thead>
@@ -79,11 +99,11 @@ require_once "../sistema/vistas/encabezados/Header.php";
                     <th>Acciones</th>
                 </tr>
             </thead>
-            <tbody>
+            <tbody id="tabla_matrimonios">
                 <?php
-                if (isset($parametros['matrimonios'])) {
-                    echo $parametros['matrimonios'];
-                }
+                    if (isset($parametros['matrimonios'])) {
+                        echo $parametros['matrimonios'];
+                    }
                 ?>
             </tbody>
         </table>

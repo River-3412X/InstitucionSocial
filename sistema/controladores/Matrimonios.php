@@ -191,4 +191,10 @@ class Matrimonios extends Controlador
             echo $this->modelo->boton_citas_matrimonios($idusuario, $fecha);
         }
     }
+    public function buscar(){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $buscador = trim($_POST['buscador']);
+            echo $this->modelo->buscar_matrimonio($buscador);
+        }
+    }
 }

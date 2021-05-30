@@ -969,4 +969,95 @@ class Matrimonio
             return "Error";
         }
     }
+
+    public function buscar_matrimonio($buscador){
+        $base = new Base();
+        $sql = "SELECT * from matrimonios where 
+        nomnovia like '%{$buscador}%' or 
+        apellidonovia  like '%{$buscador}%' or 
+        nomnovio like '%{$buscador}%' or 
+        fecha like '%{$buscador}%' or 
+        horaboda like '%{$buscador}%' or 
+        nommadrina like '%{$buscador}%' or 
+        apemadrina like '%{$buscador}%' or 
+        nompadrino like '%{$buscador}%' or 
+        apepadrino like '%{$buscador}%' ";
+        
+
+        $matrimonios = $base->consultar($sql);
+        $retorno = "";
+        if ($matrimonios) {
+            foreach ($matrimonios as $matrimonio) {
+                $retorno .= "
+                    <tr>
+                        <td>{$matrimonio->nomnovia} {$matrimonio->apellidonovia}</td>
+                        <td>{$matrimonio->nomnovio} {$matrimonio->apellidonovio}</td>
+                        <td>{$matrimonio->fecha}</td>
+                        <td>{$matrimonio->horaboda}</td>
+                        <td>{$matrimonio->nommadrina} {$matrimonio->apemadrina}</td>
+                        <td>{$matrimonio->nompadrino} {$matrimonio->apepadrino}</td>
+                        <td>
+                            <div>
+                                <div class='badge btn-sm btn-pop'>
+                                    Doumentos de la Novia
+                                </div>
+                                <div class='pop disabled'>
+                                    <div class='pop-header'>
+                                        Novia
+                                    </div>
+                                    <div class='pop-body'>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->actanacimientonovia}' class='badge badge-info' target='_blank' >Acta de Nacimiento</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->comprobantedomicilionovia}' class='badge badge-info' target='_blank' >Comprobante de Domicilio</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->comprobantebautizonovia}' class='badge badge-info' target='_blank' >Comprobante de Bautizo</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->certificadoconfirmacionnovia}' class='badge badge-info' target='_blank' >Certificado de Confirmación</a> <br>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            
+                            <div>
+                                <div class='badge btn-sm btn-pop'>
+                                    Doumentos de la Novio
+                                </div>
+                                <div class='pop disabled'>
+                                    <div class='pop-header'>
+                                        Novio
+                                    </div>
+                                    <div class='pop-body'>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->actanacimientonovio}' class='badge badge-info' target='_blank' >Acta de Nacimiento</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->comprobantedomicilionovio}' class='badge badge-info' target='_blank' >Comprobante de Domicilio</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->comprobantebautizonovio}' class='badge badge-info' target='_blank' >Comprobante de Bautizo</a> <br>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->certificadoconfirmacionnovio}' class='badge badge-info' target='_blank' >Cetficiado de Confirmación</a> <br>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div>
+                                <div class='badge btn-sm btn-pop'>
+                                    Padrinos
+                                </div>
+                                <div class='pop disabled'>
+                                    <div class='pop-header'>
+                                        Padrinos
+                                    </div>
+                                    <div class='pop-body'>
+                                        <a href='" . DOMINIO . "/public/assets/archivospdf/{$matrimonio->actamatrimoniopadrinos}' class='badge badge-info' target='_blank' >Acta de Matrimonio</a> <br>
+                                    </div>
+                                </div>
+                            </div>
+                        </td>
+                        <td>
+                            <div class='d-flex'>
+                            <a href='" . DOMINIO . "/matrimonios/modificar/{$matrimonio->idmatrimonio}' class='btn btn-primary btn-sm mr-2'>Modificar</a>
+                            <a href='" . DOMINIO . "/matrimonios/eliminar/{$matrimonio->idmatrimonio}' class='btn btn-danger btn-sm eliminar'>Eliminar</a>
+                            </div>
+                        </td>
+                    </tr>
+                ";
+            }
+        } else {
+            $retorno = "<tr class='text-center text-danger'> <td colspan='8'>No se encontraron resultados de matrimonios para la busqueda '{$buscador}' </td></tr>";
+        }
+        return $retorno;
+    }
 }
