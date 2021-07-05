@@ -173,3 +173,4 @@ alter table bautizos add comprobate TEXT;
 
 alter table usuario add codigo INT;
 alter table usuario add estado INT;
+alter table bautizos add estatus INT;

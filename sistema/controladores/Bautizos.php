@@ -36,6 +36,34 @@ class Bautizos extends Controlador
             }
         }
     }
+
+    public function administrador_registrar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            verificarSesion("Administrador"); 
+            $this->cargarVista("Registrar_bautizos");
+            //acciones a ejecutar sobre el método get
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $parametros = [
+                    "nombre" => trim($_POST['nombre']),
+                    "apellido" => trim($_POST['apellido']),
+                    "nombmadre" => trim($_POST['nomad']),
+                    "apellidosmadre" => trim($_POST['apemad']),
+                    "nombpadre" => trim($_POST['nompad']),
+                    "apellidospadre" => trim($_POST['apepad']),
+                    "telefono" => trim($_POST['telefono']),
+                    "fecha" => trim($_POST['txtfecha']),
+                    "horabautizo" => trim($_POST['hora']),
+                    "nombrepad" => trim($_POST['nompadrinos']),
+                    "apepad" => trim($_POST['apepadrinos']),
+                    "actadenacimiento" => $_FILES['actadenacimiento'],
+                    "comprobate" => $_FILES['comprobante'],
+                ];
+                echo $this->modelo->registrar($parametros);
+            }
+        }
+    }
     public function cambiar_hora()
     {
         $fecha = $_POST['fecha'];
@@ -100,6 +128,13 @@ class Bautizos extends Controlador
     public function eliminar($id=0){
         if($_SERVER['REQUEST_METHOD']=="POST"){
             echo $this->modelo->eliminar($id);
+        }
+    }
+  
+    public function buscar(){
+        if ($_SERVER['REQUEST_METHOD'] == "POST") {
+            $busca = trim($_POST['busca']);
+            echo $this->modelo->buscar_bautizo($busca);
         }
     }
 }

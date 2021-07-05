@@ -71,7 +71,7 @@
                     </div>
                 </div>
                 <div class="tab-container-item" id="contenido_dos">
-                    <h3 class="text-center">Datos de Novio</h3>
+                    <h3 class="text-center">Datos del Novio</h3>
                     <div class="row">
                         <div class="col-12 col-md-6">
                             <div class="form-group">
@@ -154,7 +154,7 @@
                     </div>
                 </div>
                 <div class="tab-container-item" id="contenido_cuatro">
-                    <h3 class="text-center">Datos de la Cita de la Boda</h3>
+                    <h3 class="text-center">Datos de la Boda</h3>
                     <div class="row">
 
                         <div class="col-12 col-sm-6">

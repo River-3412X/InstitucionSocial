@@ -20,12 +20,12 @@
             <div class="tab-container p-4" id="tab_container">
                 <div class="tab-container-item" id="contenido_uno">
                     <div class="form-group">
-                        <label for="txtnombre">Nombre Alummno</label>
+                        <label for="txtnombre">Nombre Alumno</label>
                         <input type="text" name="txtNombre" placeholder="Nombre del niño" class="form-control" id="nombre_alumno">
                     </div>
 
                     <div class="form-group">
-                        <label for="txtApellidos">Apellidos Alummno</label>
+                        <label for="txtApellidos">Apellidos Alumno</label>
                         <input type="text" name="txtApellidos" placeholder="Apellidos del alumno" class="form-control" id="apellidos_alumno">
                     </div>
 

@@ -66,15 +66,37 @@
                 </div>
                 <div class="tab-container-item" id="contenido_tres">
                     <div class="form-group">
-                        <label for="txtnom">Nombre Madrina o Padrino</label>
-                        <input type="text" name="nompadrinos" placeholder="Nombre de la Madrina" id="nombre_madrina" class="form-control">
+                        <label for="txtnom">Nombre del primer Padrino</label>
+                        <input type="text" name="nompadrinos" placeholder="Nombre " id="nombre_madrina" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="txtape">Apellidos Madrina o Padrino</label><br>
-                        <input type="text" name="apepadrinos" placeholder="Apellidos de la Madrina" id="apellidos_madrina" class="form-control">
+                        <label for="txtape">Apellidos del primer padrino</label><br>
+                        <input type="text" name="apepadrinos" placeholder="Apellidos " id="apellidos_madrina" class="form-control">
+                    </div>
+                    <label>En caso de que solo sea un padrino favor de llenar los demás campos con el texto "no aplica"</label>
+                    <div class="form-group">
+                        <label for="txtnom">Nombre del segundo Padrino</label>
+                        <input type="text" name="nompadrinos2" placeholder="Nombre " id="nombres_padrinos" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label for="txtape">Apellidos del segundo padrino</label><br>
+                        <input type="text" name="apepadrinos2" placeholder="Apellidos" id="apellidos_padrinos" class="form-control">
                     </div>
 
                     <div class="input-file">
+                    <label>
+                    <label><b>Si solo es un padrino:</b></label>
+                    <br>
+                    <label>Adjuntar en un PDF su Fe de bautizo</label>
+                    <br>
+                    <label><b>Si ambos son dos padrinos solteros:</b></label>
+                    <br>
+                    <label>Adjuntar en un solo PDF ambas Fe de bautizo de cada uno de los padrinos </label>
+                    <br>
+                    <label><b>Si ambos padrinos son esposos:</b></label>
+                    <br>
+                    <label> Adjuntar en un  PDF de su acta de matrimonio </label>
+                    <br>
                         <label for="comprobante">Fe de Bautizo o Acta de Matrimonio</label>
                         <input type="file" name="comprobante" id="comprobante" accept="application/pdf">
                         <label for="comprobante" id="labelcomprobante" class="nombre-archivo">Selecciona un archivo PDF</label>

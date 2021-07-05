@@ -1,6 +1,6 @@
 <?php
-    define("DOMINIO","http://localhost/sis");
-    //define("DOMINIO","http://localhost/InstitucionSocial");
+    //define("DOMINIO","http://localhost/sis");
+    define("DOMINIO","http://localhost/InstitucionSocial");
     //define("DOMINIO","http://192.168.0.8/InstitucionSocial");
 
     //define("ICONO",DOMINIO."/public/img/iconos/iconoPagina.png");

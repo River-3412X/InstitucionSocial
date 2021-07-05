@@ -158,6 +158,8 @@ $().ready(function () { // aqui indico cuando esta lista la página (o haya carg
         "#apellidos_padre",
         "#nombre_madrina",
         "#apellidos_madrina",
+        "#nombres_padrinos",
+        "#apellidos_padrinos",
     ];
 
     validar_campos("#nombre");
@@ -166,8 +168,11 @@ $().ready(function () { // aqui indico cuando esta lista la página (o haya carg
     validar_campos("#apellidos_madre");
     validar_campos("#nombre_padre");
     validar_campos("#apellidos_padre");
-    validar_campos("#nombre_madrina");
+    validar_campos("#nombre_madrina"); 
     validar_campos("#apellidos_madrina");
+    validar_campos("#nombres_padrinos");
+    validar_campos("#apellidos_padrinos");
+    
 });
 
 

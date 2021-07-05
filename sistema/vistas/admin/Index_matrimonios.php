@@ -96,6 +96,7 @@ require_once "../sistema/vistas/encabezados/Header.php";
                     <th>Madrina</th>
                     <th>Padrino</th>
                     <th>Documentos</th>
+                    <th>Estatus</th>
                     <th>Acciones</th>
                 </tr>
             </thead>

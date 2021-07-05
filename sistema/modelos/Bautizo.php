@@ -16,6 +16,7 @@ class Bautizo
             return "La hora del bautizo ya está ocupada, selecciona otra";
         } else {
             session_start();
+            $estatus=1;
             $idusuario = $_SESSION['id'];
 
             $actadenacimiento = $this->subir_archivo($datos['actadenacimiento']["tmp_name"], $datos['actadenacimiento']["name"]);
@@ -27,7 +28,7 @@ class Bautizo
                 nombpadre,apellidospadre,
                 telefono,fecha,
                 horabautizo, nombrepad,
-                apepad, actadenacimiento,comprobate,idusuario
+                apepad, actadenacimiento,comprobate,idusuario,estatus
             ) values(
                 :nombre,:apellido,
                 :nombmadre,:apellidosmadre,
@@ -51,6 +52,7 @@ class Bautizo
                 ["etiqueta" => "actadenacimiento", "valor" => $actadenacimiento, "parametro" => PDO::PARAM_STR],
                 ["etiqueta" => "comprobate", "valor" => $comprobante, "parametro" => PDO::PARAM_STR],
                 ["etiqueta" => "idusuario", "valor" => $idusuario, "parametro" => PDO::PARAM_INT],
+                ["etiqueta" => "estatus", "valor" => $estatus, "parametro" => PDO::PARAM_INT],
             ];
             if ($base->insertar($sql, $parametros) == 1) {
                 return "Se realizó el registro correctamente";
@@ -157,6 +159,9 @@ class Bautizo
                                 <a target='_blank' href='" . DOMINIO . "/public/assets/archivospdf/{$bautizo->actadenacimiento}' class='badge badge-info mr-2'>Acta de Nacimiento</a> <br>
                                 <a target='_blank' href='" . DOMINIO . "/public/assets/archivospdf/{$bautizo->comprobate}' class='badge badge-info mr-2'>Comprobante</a>
                             </div>
+                        </td>
+                        <td>
+                        <span class='badge bg-success'>Autorizado</span>
                         </td>
                         <td>
                             <div class='d-flex'>
@@ -471,4 +476,57 @@ class Bautizo
             return $archivo;
         }
     }
+   
+   public function buscar_bautizo($busca){
+    
+    $base = new Base();
+    $sql = "SELECT * from bautizos where 
+    nombre like '%{$busca}%' or 
+    apellido  like '%{$busca}%' or 
+    nombmadre like '%{$busca}%' or 
+    apellidosmadre like '%{$busca}%' or 
+    nombpadre like '%{$busca}%' or 
+    apellidospadre like '%{$busca}%' or 
+    telefono like '%{$busca}%' or 
+    fecha like '%{$busca}%' or 
+    horabautizo like '%{$busca}%' ";
+
+    $bautizos = $base->consultar($sql);
+
+    $retorno = "";
+
+    if ($bautizos) {
+        foreach ($bautizos as $bautizo) {
+            $retorno .= "
+                <tr>
+                    <td>{$bautizo->nombre} {$bautizo->apellido}</td>
+                    <td>{$bautizo->nombmadre} {$bautizo->apellidosmadre}</td>
+                    <td>{$bautizo->nombpadre} {$bautizo->apellidospadre}</td>
+                    <td>{$bautizo->telefono}</td>
+                    <td>{$bautizo->fecha}</td>
+                    <td>{$bautizo->horabautizo}</td>
+                    <td>{$bautizo->nombrepad}</td>
+                    <td>
+                        <div style='display:inline-block'>
+                            <a target='_blank' href='" . DOMINIO . "/public/assets/archivospdf/{$bautizo->actadenacimiento}' class='badge badge-info mr-2'>Acta de Nacimiento</a> <br>
+                            <a target='_blank' href='" . DOMINIO . "/public/assets/archivospdf/{$bautizo->comprobate}' class='badge badge-info mr-2'>Comprobante</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class='d-flex'>
+                            <a href='" . DOMINIO . "/bautizos/modificar/{$bautizo->idbautizo}' class='btn btn-primary btn-sm mr-2'>Modificar</a>
+                            <a href='" . DOMINIO . "/bautizos/eliminar/{$bautizo->idbautizo}' class='btn btn-danger btn-sm eliminar'>Eliminar</a>
+
+                        </div>
+                    </td>
+
+                </tr>
+            ";
+        }
+    }else {
+        $retorno = "<tr class='text-center text-danger'> <td colspan='8'>No se encontraron resultados de bautizos para la busqueda '{$busca}' </td></tr>";
+    }
+    return $retorno;
+  }
+
 }

@@ -1017,7 +1017,7 @@ class Matrimonio
                             
                             <div>
                                 <div class='badge btn-sm btn-pop'>
-                                    Doumentos de la Novio
+                                    Doumentos del Novio
                                 </div>
                                 <div class='pop disabled'>
                                     <div class='pop-header'>
@@ -1045,6 +1045,9 @@ class Matrimonio
                                     </div>
                                 </div>
                             </div>
+                        </td>
+                        <td>
+                        <span></span>
                         </td>
                         <td>
                             <div class='d-flex'>

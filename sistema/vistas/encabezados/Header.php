@@ -14,7 +14,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Old+Standard+TT&display=swap" rel="stylesheet">
 <div class="m-0"> 
     <div class="container">
-        <h1 class="text-center m-0 py-5" style="color:#2F565C; font-family:'Lobster'">Parroquia de la Santisima Trinidad y Santa Maria de Guadalupe</h1>
+        <h1 class="text-center m-0 py-5" style="color:#2F565C; font-family:'Lobster'">Parroquia de la Santísima Trinidad y Santa María de Guadalupe</h1>
     </div>
 </div>
 

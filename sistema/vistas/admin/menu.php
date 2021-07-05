@@ -19,21 +19,60 @@
       <li class="nav-item">
         <a class="nav-link " href="<?php echo DOMINIO; ?>">Home</a>
       </li>
-      <li class="nav-item">
-        <a id="maitem1" class="nav-link " href="<?php echo DOMINIO; ?>/bautizos/index">Bautizos</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<?php echo DOMINIO; ?>/bautizos/index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Bautizos                                                                                                                        
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item"  href="<?php echo DOMINIO; ?>/bautizos/index">Ver Bautizos</a>
+          <a class="dropdown-item" href="<?php echo DOMINIO; ?>/bautizos/administrador_registrar">Agregar</a>
+     </div>
       </li>
-      <li class="nav-item">
-        <a id="maitem2" class="nav-link" href="<?php echo DOMINIO; ?>/administrador/index">Citas</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<?php echo DOMINIO; ?>/administrador/index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Citas                                                                                                                        
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"  href="<?php echo DOMINIO; ?>/administrador/index">Ver Citas</a>
+          <a class="dropdown-item" href="<?php echo DOMINIO; ?>/administrador/registrar_cita">Agregar</a>
+     </div>
       </li>
-      <li class="nav-item">
-        <a id="maitem3" class="nav-link" href="<?php echo DOMINIO; ?>/comuniones/index">Comuniones</a>
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<?php echo DOMINIO; ?>/comuniones/index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Comuniones                                                                                                                       
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"  href="<?php echo DOMINIO; ?>/comuniones/index">Ver Comuniones</a>
+          <a class="dropdown-item" href="<?php echo DOMINIO; ?>/comuniones/adm_registrar">Agregar</a>
+     </div>
       </li>
-      <li class="nav-item">
-        <a id="maitem4" class="nav-link" href="<?php echo DOMINIO; ?>/confirmaciones/index">Confirmaciones</a>
+
+      
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="<?php echo DOMINIO; ?>/confirmaciones/index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+       Confirmaciones                                                                                                                     
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"  href="<?php echo DOMINIO; ?>/confirmaciones/index">Ver confirmaciones</a>
+          <a class="dropdown-item" href="<?php echo DOMINIO; ?>/confirmaciones/admin_registrar">Agregar</a>
+     </div>
       </li>
-      <li class="nav-item">
-        <a id="maitem5" class="nav-link" href="<?php echo DOMINIO; ?>/matrimonios/index">Matrimonios</a>
+
+     
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle"href="<?php echo DOMINIO; ?>/matrimonios/index" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        Matrimonios
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+        <a class="dropdown-item"  href="<?php echo DOMINIO; ?>/matrimonios/index">Ver matrimonios</a>
+          <a class="dropdown-item" href="<?php echo DOMINIO; ?>/matrimonios/admin_registrar">Agregar</a>
+     </div>
       </li>
+
+
       <li class="nav-item">
         <a class="nav-link" href="<?php echo DOMINIO; ?>/home/cerrar_sesion">Cerrar Sesión</a>
       </li>

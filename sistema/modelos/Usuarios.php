@@ -118,7 +118,7 @@ class Usuarios
 
     
                 Para activar tu cuenta haz click en el siguiente enlace: </p> 
-                <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="http://parroquiadelasantisimatrinidad.com/home/activar/'.$usuario.'/'.$passHash.'">Activar cuenta</a> 
+                <a style="text-decoration: none; border-radius: 5px; padding: 11px 23px; color: white; background-color: #3498db" href="https://parroquiadelasantisimatrinidad.com/home/activar/'.$usuario.'/'.$passHash.'">Activar cuenta</a> 
                 <br>';
                 $headers = "MIME-Version: 1.0\r\n";
                 $headers .= "Content-type: text/html; charset=utf8\r\n";

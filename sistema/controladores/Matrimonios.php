@@ -197,4 +197,68 @@ class Matrimonios extends Controlador
             echo $this->modelo->buscar_matrimonio($buscador);
         }
     }
+    public function admin_registrar()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == "GET") {
+            verificarSesion("Administrador"); 
+            
+            $this->cargarVista("Registrar_matrimonios"); // se carga una vista, la primer letra tiene que se mayuscula, y no debe tener la extencion .php
+        } else {
+            if ($_SERVER['REQUEST_METHOD'] == "POST") {
+                $nombreNovia = trim($_POST['txtnombre']);
+                $apellidosNovia = trim($_POST['txtapellido']);
+
+                $nombreNovio = trim($_POST["txtnom"]);
+                $apellidosNovio = trim($_POST["txtape"]);
+                $fecha = trim($_POST['txtfecha']);
+
+                $nombreMadrina = trim($_POST['txtnmad']);
+                $apellidosMadrina = trim($_POST['txtamad']);
+
+                $nombrePadrino = trim($_POST['txtapad']);
+                $apellidosPadrino = trim($_POST['txtnpad']);
+                $hora_boda = trim($_POST['hora']);
+
+                //                datos para registrar la cita
+                $fecha_cita = trim($_POST['txtfecha_cita']); //captura de datos 
+                $hora_cita = trim($_POST['txthora']);
+                $motivo_cita = trim($_POST['txtmotivo']);
+
+                $ann = $_FILES['actanacimientonovia'];
+                $comnovia = $_FILES['comprobantedomicilionovia'];
+                $cbanovia = $_FILES['comprobantebautizonovia'];
+                $ctdna = $_FILES['certificadoconfirmacionnovia'];
+                $actno = $_FILES['actanacimientonovio'];
+                $cdno = $_FILES['comprobantedomicilionovio'];
+                $cbno = $_FILES['comprobantebautizonovio'];
+                $ccno = $_FILES['certificadoconfirmacionnovio'];
+                $amp = $_FILES['actamatrimoniopadrinos'];
+
+                echo $this->modelo->registrar( //se le dice al modelo que ejecute su metodo registrar para que registre el matrimonio
+                    $nombreNovia,
+                    $apellidosNovia,
+                    $nombreNovio,
+                    $apellidosNovio,
+                    $fecha,
+                    $nombreMadrina,
+                    $apellidosMadrina,
+                    $nombrePadrino,
+                    $apellidosPadrino,
+                    $ann,
+                    $comnovia,
+                    $cbanovia,
+                    $ctdna,
+                    $actno,
+                    $cdno,
+                    $cbno,
+                    $ccno,
+                    $amp,
+                    $hora_boda,
+                    $fecha_cita,
+                    $hora_cita,
+                    $motivo_cita
+                );
+            }
+        }
+    }
 }

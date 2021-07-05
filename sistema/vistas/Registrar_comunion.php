@@ -22,12 +22,12 @@
                     <div class="row">
                         <div class="col-12 col-sm-6">
                             <div class="form-group">
-                                <label for="txtnombre">Nombre Alummno</label>
+                                <label for="txtnombre">Nombre Alumno</label>
                                 <input type="text" name="txtNombre" placeholder="Nombre del niño" class="form-control" id="nombre_alumno">
                             </div>
 
                             <div class="form-group">
-                                <label for="txtApellidos">Apellidos Alummno</label>
+                                <label for="txtApellidos">Apellidos Alumno</label>
                                 <input type="text" name="txtApellidos" placeholder="Apellidos del alumno" class="form-control" id="apellidos_alumno">
                             </div>
 
